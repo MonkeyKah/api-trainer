@@ -96,7 +96,7 @@ margin-left: 40px;
 </head>
 <body>
 
-  <h1>🗣️ Entraînement à la transcription API</h1>
+  <h1>🗣️ Entraînement à la transcription blblblbl API</h1>
 
   <div class="card">
     <div class="mode-select">
@@ -117,8 +117,8 @@ margin-left: 40px;
     <div class="keyboard" id="keyboard"></div>
   </div>
 
-  <script>
-  const words = [
+ <script>
+const words = [
   { api: "kæt", eng: "cat" },
   { api: "dɒg", eng: "dog" },
   { api: "həʊm", eng: "home" },
@@ -235,7 +235,7 @@ margin-left: 40px;
   { api: "kʊkiŋ", eng: "cooking" },
   { api: "ridiŋ", eng: "reading" },
   { api: "raitiŋ", eng: "writing" },
-  { api: "dɹɔːiŋ", eng: "drawing" },
+  { api: "drɔːiŋ", eng: "drawing" },
   { api: "swimiŋ", eng: "swimming" },
   { api: "wɔːkiŋ", eng: "walking" },
   { api: "raidiŋ", eng: "riding" },
@@ -256,18 +256,18 @@ margin-left: 40px;
   { api: "læŋgwidʒ", eng: "language" },
   { api: "kʌlʃə", eng: "culture" },
   { api: "gʌvənmənt", eng: "government" },
-  { api: "gɑːdnə", eng: "gardener" },
+  { api: "gɑːdənə", eng: "gardener" },-----
   { api: "tʃiːtə", eng: "cheetah" },
   { api: "lʌvli", eng: "lovely" },
   { api: "simpəl", eng: "simple" },
   { api: "difikəlt", eng: "difficult" },
   { api: "imɔːtəl", eng: "immortal" },
-  { api: "gɹeitiŋ", eng: "greeting" },
+  { api: "greitiŋ", eng: "greeting" },
   { api: "læftə", eng: "laughter" },
   { api: "tʃildhʊd", eng: "childhood" },
   { api: "meməri", eng: "memory" },
   { api: "piːsfl", eng: "peaceful" },
-  { api: "histəɹi", eng: "history" },
+  { api: "histəri", eng: "history" },
   { api: "glɒbəl", eng: "global" },
   { api: "tɛmpərətʃə", eng: "temperature" },
   { api: "gəʊldən", eng: "golden" },
@@ -279,17 +279,17 @@ margin-left: 40px;
   { api: "ɒtəm", eng: "autumn" },
   { api: "heipis", eng: "happiness" },
   { api: "friːdəm", eng: "freedom" },
-  { api: "ɹaitəs", eng: "righteous" },
+  { api: "raitəs", eng: "righteous" },
   { api: "ɔːgənik", eng: "organic" },
   { api: "haigiːn", eng: "hygiene" },
   { api: "pɒliʃ", eng: "polish" },
-  { api: "gɹeitə", eng: "greater" },
-  { api: "ɹʌnə", eng: "runner" },
+  { api: "greitə", eng: "greater" },
+  { api: "rʌnə", eng: "runner" },
   { api: "spirit", eng: "spirit" },
   { api: "bjuːti", eng: "beauty" },
   { api: "pɜːsən", eng: "person" },
   { api: "raivəl", eng: "rival" },
-  { api: "nitʃə", eng: "nature" },
+  { api: "neitʃə", eng: "nature" },
   { api: "maindfəl", eng: "mindful" },
   { api: "fɔːtʃu:n", eng: "fortune" },
   { api: "greisfəl", eng: "graceful" },
@@ -298,76 +298,122 @@ margin-left: 40px;
 ];
 
 
+const ipaKeys = [
+  "p", "b", "t", "d", "k", "g",
+  "f", "v", "θ", "ð", "s", "z", "ʃ", "ʒ", "h",
+  "m", "n", "ŋ", "l", "r", "j", "w",
+  "iː", "i", "e", "æ", "a:", "ɒ", "ɔː", "ʊ", "u:",
+  "ʌ", "ɜː", "ə", "ai", "ei", "ɔi", "aʊ", "əʊ",
+  "ˈ", "ˌ", ".", "ː"
+];
 
+// 🎹 Clavier API
+const keyboard = document.getElementById("keyboard");
+ipaKeys.forEach(symbol => {
+  const key = document.createElement("div");
+  key.textContent = symbol;
+  key.className = "key";
+  key.onclick = () => insertSymbol(symbol);
+  keyboard.appendChild(key);
+});
+function insertSymbol(symbol) {
+  const input = document.getElementById("answer");
+  input.value += symbol;
+  input.focus();
+}
 
+// 🧠 Variables principales
+let mode = "api";
+let remainingWords = [...words];
+let currentWord = null;
+let score = 0;
+let attempts = 0;
+let alreadyAnswered = false;
 
-    const ipaKeys = [
-      "p", "b", "t", "d", "k", "g",
-      "f", "v", "θ", "ð", "s", "z", "ʃ", "ʒ", "h",
-      "m", "n", "ŋ", "l", "r", "j", "w",
-      "iː", "i", "e", "æ", "a:", "ɒ", "ɔː", "ʊ", "u:",
-      "ʌ", "ɜː", "ə", "ai", "ei", "ɔi", "aʊ", "əʊ",
-      "ˈ", "ˌ", ".", "ː"
-    ];
+const feedback = document.getElementById("feedback");
+const question = document.getElementById("question");
+const input = document.getElementById("answer");
+const scoreDisplay = document.getElementById("score");
+const nextButton = document.querySelector("button[onclick='nextWord()']");
 
-    const keyboard = document.getElementById("keyboard");
-    ipaKeys.forEach(symbol => {
-      const key = document.createElement("div");
-      key.textContent = symbol;
-      key.className = "key";
-      key.onclick = () => insertSymbol(symbol);
-      keyboard.appendChild(key);
-    });
+// 🎚️ Changement de mode
+const modeInputs = document.querySelectorAll("input[name='mode']");
+modeInputs.forEach(input => {
+  input.addEventListener("change", () => {
+    mode = input.value;
+    resetGame();
+  });
+});
 
-    function insertSymbol(symbol) {
-      const input = document.getElementById("answer");
-      input.value += symbol;
-      input.focus();
-    }
+// 🔄 Nouvelle question
+function nextWord() {
+  if (nextButton.textContent === "🔁 Recommencer") {
+    resetGame();
+    return;
+  }
 
-    let mode = "api";
-    let index = 0;
-    let score = 0;
-    let attempts = 0;
+  if (remainingWords.length === 0) {
+    nextButton.textContent = "🔁 Recommencer";
+    feedback.textContent = "👏 Tu as terminé tous les mots !";
+    return;
+  }
 
-    const modeInputs = document.querySelectorAll("input[name='mode']");
-    modeInputs.forEach(input => {
-      input.addEventListener("change", () => {
-        mode = input.value;
-        nextWord();
-      });
-    });
+  const index = Math.floor(Math.random() * remainingWords.length);
+  currentWord = remainingWords[index];
+  remainingWords.splice(index, 1);
 
-    function nextWord() {
-      index = Math.floor(Math.random() * words.length);
-      document.getElementById("feedback").textContent = "";
-      document.getElementById("answer").value = "";
-      if (mode === "api") {
-        document.getElementById("question").textContent = ` ${words[index].api}`;
-      } else {
-        document.getElementById("question").textContent = ` ${words[index].eng}`;
-      }
-    }
+  question.textContent = mode === "api" ? currentWord.api : currentWord.eng;
+  feedback.textContent = "";
+  input.value = "";
+  nextButton.textContent = "Suivant";
+  alreadyAnswered = false;
+}
 
-    function checkAnswer() {
-      const answer = document.getElementById("answer").value.trim().toLowerCase();
-      const feedback = document.getElementById("feedback");
-      const correct = (mode === "api" ? words[index].eng : words[index].api).toLowerCase();
-      attempts++;
-      if (answer === correct) {
-        score++;
-        feedback.style.color = "green";
-        feedback.textContent = "✅ Bonne réponse !";
-      } else {
-        feedback.style.color = "red";
-        feedback.textContent = `❌ Mauvaise réponse. C’était : ${correct}`;
-      }
-      document.getElementById("score").textContent = `Score : ${score} / ${attempts}`;
-    }
+// ✅ Vérifie la réponse
+function checkAnswer() {
+  if (!currentWord || alreadyAnswered) return;
 
-    nextWord();
-  </script>
+  const answer = input.value.trim().toLowerCase();
+  const correct = (mode === "api" ? currentWord.eng : currentWord.api).toLowerCase();
+  attempts++;
+
+  if (answer === correct) {
+    score++;
+    feedback.style.color = "green";
+    feedback.textContent = "✅ Bonne réponse !";
+  } else {
+    feedback.style.color = "red";
+    feedback.textContent = `❌ Mauvaise réponse. C’était : ${correct}`;
+  }
+
+  alreadyAnswered = true;
+  scoreDisplay.textContent = `Score : ${score} / ${attempts}`;
+
+  if (remainingWords.length === 0) {
+    nextButton.textContent = "🔁 Recommencer";
+  }
+}
+
+// 🔁 Réinitialisation
+function resetGame() {
+  remainingWords = [...words];
+  score = 0;
+  attempts = 0;
+  alreadyAnswered = false;
+  scoreDisplay.textContent = `Score : 0 / 0`;
+  nextButton.textContent = "Suivant";
+  feedback.textContent = "";
+  nextWord();
+}
+
+// ⚙️ Entrée clavier
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") checkAnswer();
+});
+
+// 🚀 Démarrage
+nextWord();
+</script>
 
 </body>
 </html>
-
