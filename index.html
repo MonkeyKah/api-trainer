@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entraîne-toi à l’API anglaise 🇬🇧</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #fff7f0;
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #e67e22;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 30px auto;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 10px;
+      width: 80%;
+      border: 2px solid #f3c08a;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    button {
+      background: #e67e22;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #cf6b13;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .mode-select {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 20px; /* espace horizontal entre les deux options */
+  margin-bottom: 20px;
+margin-left: 40px;
+  text-align: center;
+}
+
+.mode-select label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem;
+  white-space: nowrap; /* garde tout sur une seule ligne */
+}
+
+.mode-select input[type="radio"] {
+  margin: 0;
+  transform: scale(1.1);
+}
+
+    .keyboard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .key {
+      background: #ffe0c2;
+      border: 1px solid #f3c08a;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin: 3px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: "Courier New", monospace;
+    }
+    .key:hover {
+      background: #f9cfa5;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🗣️ Entraînement à la transcription API</h1>
+
+  <div class="card">
+    <div class="mode-select">
+      <label><input type="radio" name="mode" value="api" checked> API ➜ Mot anglais</label><br>
+      <label><input type="radio" name="mode" value="eng"> Mot anglais ➜ API</label>
+    </div>
+
+    <h2 id="question">Chargement...</h2>
+    <input id="answer" type="text" placeholder="Ta réponse ici">
+    <br>
+    <button onclick="checkAnswer()">Valider</button>
+    <div class="feedback" id="feedback"></div>
+    <button onclick="nextWord()">Suivant</button>
+
+    <p id="score">Score : 0 / 0</p>
+
+    <!-- CLAVIER API -->
+    <div class="keyboard" id="keyboard"></div>
+  </div>
+
+  <script>
+  const words = [
+  { api: "kæt", eng: "cat" },
+  { api: "dɒg", eng: "dog" },
+  { api: "həʊm", eng: "home" },
+  { api: "haʊs", eng: "house" },
+  { api: "trein", eng: "train" },
+  { api: "kɑː", eng: "car" },
+  { api: "bʊk", eng: "book" },
+  { api: "skuːl", eng: "school" },
+  { api: "fʊd", eng: "food" },
+  { api: "wɔːtə", eng: "water" },
+  { api: "muːn", eng: "moon" },
+  { api: "sʌn", eng: "sun" },
+  { api: "bɜːd", eng: "bird" },
+  { api: "plei", eng: "play" },
+  { api: "gɜːl", eng: "girl" },
+  { api: "bɔi", eng: "boy" },
+  { api: "frɛnd", eng: "friend" },
+  { api: "piktʃə", eng: "picture" },
+  { api: "muːvi", eng: "movie" },
+  { api: "mʌðə", eng: "mother" },
+  { api: "fɑːðə", eng: "father" },
+  { api: "sistə", eng: "sister" },
+  { api: "brʌðə", eng: "brother" },
+  { api: "kɒfi", eng: "coffee" },
+  { api: "tiː", eng: "tea" },
+  { api: "bɜːɡə", eng: "burger" },
+  { api: "pitsə", eng: "pizza" },
+  { api: "æpəl", eng: "apple" },
+  { api: "ɒrindʒ", eng: "orange" },
+  { api: "bænənə", eng: "banana" },
+  { api: "ʃɜːt", eng: "shirt" },
+  { api: "trɑːzəz", eng: "trousers" },
+  { api: "ʃuːz", eng: "shoes" },
+  { api: "dres", eng: "dress" },
+  { api: "dʒækit", eng: "jacket" },
+  { api: "hæʃ", eng: "hat" },
+  { api: "glʌv", eng: "glove" },
+  { api: "wɒtʃ", eng: "watch" },
+  { api: "riŋ", eng: "ring" },
+  { api: "sʌmwʌn", eng: "someone" },
+  { api: "nəʊbɒdi", eng: "nobody" },
+  { api: "ɛvriwʌn", eng: "everyone" },
+  { api: "sʌmθiŋ", eng: "something" },
+  { api: "nʌθiŋ", eng: "nothing" },
+  { api: "hiə", eng: "here" },
+  { api: "ðeə", eng: "there" },
+  { api: "naʊ", eng: "now" },
+  { api: "leitə", eng: "later" },
+  { api: "tədei", eng: "today" },
+  { api: "təmɒrəʊ", eng: "tomorrow" },
+  { api: "jɛstədei", eng: "yesterday" },
+  { api: "mɒrniŋ", eng: "morning" },
+  { api: "iːvniŋ", eng: "evening" },
+  { api: "nait", eng: "night" },
+  { api: "dei", eng: "day" },
+  { api: "wiːk", eng: "week" },
+  { api: "mʌnθ", eng: "month" },
+  { api: "jiə", eng: "year" },
+  { api: "ʃɒp", eng: "shop" },
+  { api: "mɑːkit", eng: "market" },
+  { api: "siti", eng: "city" },
+  { api: "kaʊntri", eng: "country" },
+  { api: "vilidʒ", eng: "village" },
+  { api: "strit", eng: "street" },
+  { api: "raivər", eng: "river" },
+  { api: "maʊntin", eng: "mountain" },
+  { api: "ɒʃən", eng: "ocean" },
+  { api: "siː", eng: "sea" },
+  { api: "leik", eng: "lake" },
+  { api: "ɡɑːdn", eng: "garden" },
+  { api: "fɒrist", eng: "forest" },
+  { api: "plænt", eng: "plant" },
+  { api: "triː", eng: "tree" },
+  { api: "flɑːwə", eng: "flower" },
+  { api: "ɡrɑːs", eng: "grass" },
+  { api: "leif", eng: "leaf" },
+  { api: "stɑː", eng: "star" },
+  { api: "klaʊd", eng: "cloud" },
+  { api: "rein", eng: "rain" },
+  { api: "snəʊ", eng: "snow" },
+  { api: "wind", eng: "wind" },
+  { api: "weðə", eng: "weather" },
+  { api: "sʌni", eng: "sunny" },
+  { api: "windi", eng: "windy" },
+  { api: "reini", eng: "rainy" },
+  { api: "kəʊld", eng: "cold" },
+  { api: "wɔːm", eng: "warm" },
+  { api: "hɒt", eng: "hot" },
+  { api: "fɜːnitʃə", eng: "furniture" },
+  { api: "bed", eng: "bed" },
+  { api: "tʃeə", eng: "chair" },
+  { api: "teibəl", eng: "table" },
+  { api: "windəʊ", eng: "window" },
+  { api: "dɔː", eng: "door" },
+  { api: "kitʃən", eng: "kitchen" },
+  { api: "bæθruːm", eng: "bathroom" },
+  { api: "liviŋ rʊm", eng: "living room" },
+  { api: "ɡɑːdn", eng: "garden" },
+  { api: "kɒmfi", eng: "comfy" },
+  { api: "bjutifəl", eng: "beautiful" },
+  { api: "hæpi", eng: "happy" },
+  { api: "sæd", eng: "sad" },
+  { api: "æŋɡri", eng: "angry" },
+  { api: "taiəd", eng: "tired" },
+  { api: "hʌŋɡri", eng: "hungry" },
+  { api: "θɜːsti", eng: "thirsty" },
+  { api: "bɔːd", eng: "bored" },
+  { api: "intəˌrɛstid", eng: "interested" },
+  { api: "ʃɒpiŋ", eng: "shopping" },
+  { api: "trævəl", eng: "travel" },
+  { api: "mjuːzik", eng: "music" },
+  { api: "dæniŋ", eng: "dancing" },
+  { api: "siŋiŋ", eng: "singing" },
+  { api: "kʊkiŋ", eng: "cooking" },
+  { api: "ridiŋ", eng: "reading" },
+  { api: "raitiŋ", eng: "writing" },
+  { api: "dɹɔːiŋ", eng: "drawing" },
+  { api: "swimiŋ", eng: "swimming" },
+  { api: "wɔːkiŋ", eng: "walking" },
+  { api: "raidiŋ", eng: "riding" },
+  { api: "spɔːt", eng: "sport" },
+  { api: "rʌniŋ", eng: "running" },
+  { api: "tʃildrən", eng: "children" },
+  { api: "peərənts", eng: "parents" },
+  { api: "fɒrəst", eng: "forest" },
+  { api: "fiʃ", eng: "fish" },
+  { api: "kætəl", eng: "cattle" },
+  { api: "hɔːs", eng: "horse" },
+  { api: "dʒɜːni", eng: "journey" },
+  { api: "hɒlidei", eng: "holiday" },
+  { api: "tʊərist", eng: "tourist" },
+  { api: "hæpinəs", eng: "happiness" },
+  { api: "peiʃənt", eng: "patient" },
+  { api: "tʃiəfəl", eng: "cheerful" },
+  { api: "læŋɡwidʒ", eng: "language" },
+  { api: "kʌlʃə", eng: "culture" },
+  { api: "ɡʌvənmənt", eng: "government" },
+  { api: "ɡɑːdnə", eng: "gardener" },
+  { api: "tʃiːtə", eng: "cheetah" },
+  { api: "lʌvli", eng: "lovely" },
+  { api: "simpəl", eng: "simple" },
+  { api: "difikəlt", eng: "difficult" },
+  { api: "imɔːtəl", eng: "immortal" },
+  { api: "ɡɹeitiŋ", eng: "greeting" },
+  { api: "læftə", eng: "laughter" },
+  { api: "tʃildhʊd", eng: "childhood" },
+  { api: "meməri", eng: "memory" },
+  { api: "piːsfl", eng: "peaceful" },
+  { api: "histəɹi", eng: "history" },
+  { api: "ɡlɒbəl", eng: "global" },
+  { api: "tɛmpərətʃə", eng: "temperature" },
+  { api: "ɡəʊldən", eng: "golden" },
+  { api: "dʒʌŋɡəl", eng: "jungle" },
+  { api: "ɹivərsaid", eng: "riverside" },
+  { api: "sʌmər", eng: "summer" },
+  { api: "wintə", eng: "winter" },
+  { api: "spriŋ", eng: "spring" },
+  { api: "ɒtəm", eng: "autumn" },
+  { api: "heipis", eng: "happiness" },
+  { api: "friːdəm", eng: "freedom" },
+  { api: "ɹaitəs", eng: "righteous" },
+  { api: "ɔːɡənik", eng: "organic" },
+  { api: "haiɡiːn", eng: "hygiene" },
+  { api: "pɒliʃ", eng: "polish" },
+  { api: "ɡɹeitə", eng: "greater" },
+  { api: "ɹʌnə", eng: "runner" },
+  { api: "spirit", eng: "spirit" },
+  { api: "bjuːti", eng: "beauty" },
+  { api: "pɜːsən", eng: "person" },
+  { api: "ɹivəl", eng: "rival" },
+  { api: "nitʃə", eng: "nature" },
+  { api: "mindfəl", eng: "mindful" },
+  { api: "fɔːtʃən", eng: "fortune" },
+  { api: "ɡɹeisfl", eng: "graceful" },
+  { api: "sɒlid", eng: "solid" },
+  { api: "diɡitəl", eng: "digital" }
+];
+
+
+
+
+    const ipaKeys = [
+      "p", "b", "t", "d", "k", "g",
+      "f", "v", "θ", "ð", "s", "z", "ʃ", "ʒ", "h",
+      "m", "n", "ŋ", "l", "r", "j", "w",
+      "iː", "i", "e", "æ", "ɑː", "ɒ", "ɔː", "ʊ", "uː",
+      "ʌ", "ɜː", "ə", "ai", "ei", "ɔi", "aʊ", "əʊ",
+      "ˈ", "ˌ", ".", "ː"
+    ];
+
+    const keyboard = document.getElementById("keyboard");
+    ipaKeys.forEach(symbol => {
+      const key = document.createElement("div");
+      key.textContent = symbol;
+      key.className = "key";
+      key.onclick = () => insertSymbol(symbol);
+      keyboard.appendChild(key);
+    });
+
+    function insertSymbol(symbol) {
+      const input = document.getElementById("answer");
+      input.value += symbol;
+      input.focus();
+    }
+
+    let mode = "api";
+    let index = 0;
+    let score = 0;
+    let attempts = 0;
+
+    const modeInputs = document.querySelectorAll("input[name='mode']");
+    modeInputs.forEach(input => {
+      input.addEventListener("change", () => {
+        mode = input.value;
+        nextWord();
+      });
+    });
+
+    function nextWord() {
+      index = Math.floor(Math.random() * words.length);
+      document.getElementById("feedback").textContent = "";
+      document.getElementById("answer").value = "";
+      if (mode === "api") {
+        document.getElementById("question").textContent = ` ${words[index].api}`;
+      } else {
+        document.getElementById("question").textContent = ` ${words[index].eng}`;
+      }
+    }
+
+    function checkAnswer() {
+      const answer = document.getElementById("answer").value.trim().toLowerCase();
+      const feedback = document.getElementById("feedback");
+      const correct = (mode === "api" ? words[index].eng : words[index].api).toLowerCase();
+      attempts++;
+      if (answer === correct) {
+        score++;
+        feedback.style.color = "green";
+        feedback.textContent = "✅ Bonne réponse !";
+      } else {
+        feedback.style.color = "red";
+        feedback.textContent = `❌ Mauvaise réponse. C’était : ${correct}`;
+      }
+      document.getElementById("score").textContent = `Score : ${score} / ${attempts}`;
+    }
+
+    nextWord();
+  </script>
+
+</body>
+</html>
