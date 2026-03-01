@@ -47,9 +47,9 @@
 
 .links-list{
   display: flex;
-  justify-content: center;   /* 🔥 centre horizontalement */
+  flex-direction: column;   /* 🔥 met les éléments en colonne */
+  align-items: center;      /* centre horizontalement */
   gap: 10px;
-  flex-wrap: wrap;
 }
 
 .links-item{
@@ -944,6 +944,7 @@ resetGame();
 <footer class="links-footer">
   <div class="links-title">Autres liens utiles :</div>
   <div class="links-list">
+    <a class="links-item" href="index.html">Accueil</a>
     <a class="links-item" href="index.html">🔤 API Trainer</a>
   </div>
 </footer>
