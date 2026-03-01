@@ -766,10 +766,18 @@ function normalize(s) {
   return (s || "")
     .trim()
     .toLowerCase()
-    .replace(/[’‘]/g, "'")           // apostrophes typographiques
-    .replace(/\s+/g, " ")            // espaces multiples
-    .replace(/\s+([,.!?;:])/g, "$1") // supprime espace avant ponctuation
-    .replace(/[.!?]+$/g, "");        // ✅ enlève ponctuation finale (.,!,?)
+    // Apostrophes typographiques → '
+    .replace(/[’‘]/g, "'")
+    // Ligatures utiles (optionnel)
+    .replace(/œ/g, "oe")
+    .replace(/æ/g, "ae")
+    // Normalisation Unicode + suppression des accents
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    // Espaces propres
+    .replace(/\s+/g, " ")
+    // Pas d'espace avant ponctuation
+    .replace(/\s+([,.!?;:])/g, "$1");
 }
 
 // ---------- State ----------
