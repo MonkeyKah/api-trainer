@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entraîne-toi à la grammaire (traduction) 🇬🇧</title>
+  <style>
+    :root{
+      --bg: #f2f8ff;
+      --card: #ffffff;
+      --accent: #5aa7ff;
+      --accent-dark: #2f82e6;
+      --border: #cfe3ff;
+      --text: #1f2a37;
+      --muted: #52606d;
+      --ok: #1a7f37;
+      --bad: #b42318;
+      --shadow: 0 10px 18px rgba(31,42,55,0.10);
+      --radius: 16px;
+    }
+
+    body{
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      text-align: center;
+      padding: 40px 16px;
+    }
+
+    h1{
+      margin: 0 0 18px;
+      color: var(--accent-dark);
+      font-size: 1.8rem;
+    }
+
+    .page-message{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 18px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      box-shadow: var(--shadow);
+      text-align: justify;
+      line-height: 1.35;
+      color: var(--muted);
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      box-shadow: var(--shadow);
+    }
+
+.mode-select{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: nowrap;        /* 🔥 empêche le retour à la ligne */
+  white-space: nowrap;      /* sécurité supplémentaire */
+}
+
+    .mode-select label{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #e9f3ff;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.98rem;
+      color: #103a6e;
+    }
+
+    .mode-select input{
+      transform: scale(1.1);
+      margin: 0;
+    }
+
+    #question{
+      margin: 16px 0 8px;
+      font-size: 1.25rem;
+      color: #0f2a4d;
+      line-height: 1.25;
+    }
+
+    .sub{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    input{
+      padding: 12px 12px;
+      width: min(92%, 640px);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      background: #fbfdff;
+    }
+
+    input:focus{
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(90,167,255,0.18);
+    }
+
+    .btn-row{
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    button{
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+
+    button:hover{
+      background: var(--accent-dark);
+    }
+
+    /* ✅ Style spécifique du bouton "Mais j'avais bon !" */
+    #almostBtn{
+      display: none;
+      background: #7fb8ff; /* bleu pastel */
+      color: white;
+    }
+    #almostBtn:hover{
+      background: #4ea0ff;
+    }
+
+    .feedback{
+      font-weight: 700;
+      margin-top: 14px;
+      min-height: 24px;
+    }
+
+    .details{
+      text-align: left;
+      margin: 14px auto 0;
+      max-width: 680px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #f7fbff;
+      display: none;
+    }
+
+    .details h3{
+      margin: 0 0 8px;
+      font-size: 1rem;
+      color: #123b6d;
+    }
+
+    .details .answer{
+      font-family: "Courier New", monospace;
+      background: #eef6ff;
+      border: 1px dashed #b9d8ff;
+      padding: 8px 10px;
+      border-radius: 10px;
+      margin: 8px 0 10px;
+      color: #0b2a52;
+      white-space: pre-wrap;
+    }
+
+    .details p{
+      margin: 0;
+      color: #304152;
+      line-height: 1.35;
+    }
+
+    #score{
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .tiny{
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1><br>🧠 Entraînement Grammaire <br> Le Groupe Verbal </h1>
+
+  <div class="page-message">
+    <p>Bonjour tout le monde ! <br><br>
+Le but de ce module est de vous permettre de vous entrainer à traduire des phrases en choisissant ou interpretant le bon aspect/modal. <br>
+Le module exige une traduction parfaite, ponctuation incluse. Si tu estimes que tu as bon, tu peux cliquer sur "Mais j'avais bon ! " et le point sera validé. Que la réponse soit bonne ou mauvaise, une explication apparaitra.<br> <br>
+Si vous avez une idée, une suggestion d'amélioration, ou si vous trouvez une coquille (il en reste encore un certain nombre...), vous pouvez m'envoyer un mail à cette adresse : themonkeyrudi@gmail.com
+          </p>
+  </div>
+
+  <div class="card">
+    <div class="mode-select">
+      <label><input type="radio" name="mode" value="fr2en" checked> FR ➜ EN</label>
+      <label><input type="radio" name="mode" value="en2fr"> EN ➜ FR</label>
+    </div>
+
+    <h2 id="question">Chargement...</h2>
+    <p class="sub" id="hint"></p>
+
+    <input id="answer" type="text" placeholder="Ta réponse ici (phrase complète)">
+    <div class="btn-row">
+      <button id="checkBtn">Valider</button>
+      <button id="nextBtn">Suivant</button>
+
+      <!-- ✅ Nouveau bouton -->
+      <button id="almostBtn">Mais j’avais bon !</button>
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <div class="details" id="details">
+      <h3>Correction</h3>
+      <div class="answer" id="correctAnswer"></div>
+      <h3>Explication Aspect/Modal</h3>
+      <p id="explain"></p>
+    </div>
+
+    <p id="score">Score : 0 / 0</p>
+    <p class="tiny">Appuie sur <b>Entrée</b> pour valider.</p>
+  </div>
+
+<script>
+const items = [
+  {
+    fr: "J’ai perdu mes clés, je ne les retrouve pas.",
+    en: "I have lost my keys, I can't find them.",
+    explain: "Present perfect (have + V-en) : l’action est passée mais la conséquence est actuelle (je ne les ai toujours pas)."
+  },
+  {
+    fr: "J’ai perdu mes clés hier.",
+    en: "I lost my keys yesterday.",
+    explain: "Prétérit : passé daté (yesterday) → rupture avec maintenant."
+  },
+  {
+    fr: "Il fume tous les jours.",
+    en: "He smokes every day.",
+    explain: "Présent simple : habitude (every day)."
+  },
+  {
+    fr: "Regarde ! Le train arrive !",
+    en: "Look! The train is coming!",
+    explain: "BE-ING : observation en cours / scène au moment où tu parles."
+  },
+  {
+    fr: "Quand il arrive, je l’appelle.",
+    en: "When he arrives, I call him.",
+    explain: "Subordonnée de temps (when) : on met le présent simple pour un fait régulier / général."
+  },
+  {
+    fr: "Je l’appellerai quand il arrivera.",
+    en: "I will call him when he arrives.",
+    explain: "Dans la subordonnée de temps (when), pas de will : on met le présent simple même si c’est futur."
+  },
+  {
+    fr: "Je ne sais pas quand il arrivera.",
+    en: "I don't know when he will arrive.",
+    explain: "Question indirecte : ici 'when' = 'à quel moment ?' → will est possible."
+  },
+  {
+    fr: "Il était en train de dormir quand je suis arrivé.",
+    en: "He was sleeping when I arrived.",
+    explain: "Prétérit BE-ING : action en cours dans le passé (arrière-plan) + événement ponctuel (arrived)."
+  },
+  {
+    fr: "Il a vécu à Paris pendant dix ans.",
+    en: "He lived in Paris for ten years.",
+    explain: "Prétérit : durée terminée (c’est fini, il n’y vit plus)."
+  },
+  {
+    fr: "Il vit à Paris depuis dix ans.",
+    en: "He has lived in Paris for ten years.",
+    explain: "Present perfect : durée qui va jusqu’à maintenant (il y vit encore)."
+  },
+  {
+    fr: "Il doit être fatigué.",
+    en: "He must be tired.",
+    explain: "Must épistémique : déduction/logique (pas une obligation)."
+  },
+  {
+    fr: "Il doit avoir oublié.",
+    en: "He must have forgotten.",
+    explain: "Must + have + V-en : déduction sur un événement passé."
+  }
+];
+
+function normalize(s) {
+  return (s || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[’‘]/g, "'")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([,.!?;:])/g, "$1");
+}
+
+// ---------- State ----------
+let mode = "fr2en";
+let remaining = [];
+let current = null;
+let score = 0;
+let attempts = 0;
+let alreadyAnswered = false;
+
+// ✅ NEW: empêche de recliquer "Mais j'avais bon !" plusieurs fois
+let pointOverrideUsed = false;
+
+// ---------- DOM ----------
+const questionEl = document.getElementById("question");
+const hintEl = document.getElementById("hint");
+const inputEl = document.getElementById("answer");
+const feedbackEl = document.getElementById("feedback");
+const detailsEl = document.getElementById("details");
+const correctAnswerEl = document.getElementById("correctAnswer");
+const explainEl = document.getElementById("explain");
+const scoreEl = document.getElementById("score");
+const nextBtn = document.getElementById("nextBtn");
+const checkBtn = document.getElementById("checkBtn");
+const almostBtn = document.getElementById("almostBtn"); // ✅ NEW
+
+// ---------- Mode select ----------
+document.querySelectorAll("input[name='mode']").forEach(r => {
+  r.addEventListener("change", () => {
+    mode = r.value;
+    resetGame();
+  });
+});
+
+// ---------- Core ----------
+function pickRandom() {
+  const idx = Math.floor(Math.random() * remaining.length);
+  const item = remaining[idx];
+  remaining.splice(idx, 1);
+  return item;
+}
+
+function showItem() {
+  if (remaining.length === 0) {
+    questionEl.textContent = "👏 Tu as terminé tous les exercices !";
+    hintEl.textContent = "";
+    feedbackEl.textContent = "";
+    detailsEl.style.display = "none";
+    nextBtn.textContent = "🔁 Recommencer";
+    current = null;
+    return;
+  }
+
+  current = pickRandom();
+  alreadyAnswered = false;
+  pointOverrideUsed = false;
+  inputEl.value = "";
+  feedbackEl.textContent = "";
+  detailsEl.style.display = "none";
+  nextBtn.textContent = "Suivant";
+
+  // ✅ NEW: cacher le bouton au début de chaque question
+  almostBtn.style.display = "none";
+
+if (mode === "fr2en") {
+  questionEl.textContent = current.fr;
+  inputEl.placeholder = "Écris la traduction en anglais...";
+} else {
+  questionEl.textContent = current.en;
+  inputEl.placeholder = "Écris la traduction en français...";
+}
+
+hintEl.textContent = "";
+
+  inputEl.focus();
+}
+
+function checkAnswer() {
+  if (!current || alreadyAnswered) return;
+
+  attempts++;
+  const user = normalize(inputEl.value);
+  const expected = normalize(mode === "fr2en" ? current.en : current.fr);
+
+  const ok = user === expected;
+
+  if (ok) {
+    score++;
+    feedbackEl.style.color = getComputedStyle(document.documentElement).getPropertyValue("--ok");
+    feedbackEl.textContent = "✅ Bonne réponse !";
+
+    // ✅ NEW: si c'est correct, on cache le bouton "Mais j'avais bon !"
+    almostBtn.style.display = "none";
+  } else {
+    feedbackEl.style.color = getComputedStyle(document.documentElement).getPropertyValue("--bad");
+    feedbackEl.textContent = "❌ Mauvaise réponse.";
+
+    // ✅ NEW: montrer le bouton seulement si faux
+    almostBtn.style.display = "inline-block";
+  }
+
+  // Toujours afficher correction + explication
+  correctAnswerEl.textContent = mode === "fr2en" ? current.en : current.fr;
+  explainEl.textContent = current.explain;
+
+  detailsEl.style.display = "block";
+  alreadyAnswered = true;
+
+  scoreEl.textContent = `Score : ${score} / ${attempts}`;
+
+  if (remaining.length === 0) nextBtn.textContent = "🔁 Recommencer";
+}
+
+// ✅ NEW: bouton "Mais j’avais bon !"
+almostBtn.addEventListener("click", () => {
+  if (!alreadyAnswered) return;
+  if (pointOverrideUsed) return;
+
+  pointOverrideUsed = true;
+  score++;
+  scoreEl.textContent = `Score : ${score} / ${attempts}`;
+
+  almostBtn.style.display = "none";
+
+  // Passe directement à la question suivante
+  next();
+});
+
+function next() {
+  if (nextBtn.textContent.includes("Recommencer")) {
+    resetGame();
+    return;
+  }
+  showItem();
+}
+
+function resetGame() {
+  remaining = [...items];
+  score = 0;
+  attempts = 0;
+  alreadyAnswered = false;
+  pointOverrideUsed = false;
+
+  // ✅ NEW: cacher le bouton au reset
+  almostBtn.style.display = "none";
+
+  scoreEl.textContent = "Score : 0 / 0";
+  showItem();
+}
+
+// Buttons
+checkBtn.addEventListener("click", checkAnswer);
+nextBtn.addEventListener("click", next);
+
+// Enter = validate
+inputEl.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") checkAnswer();
+});
+
+// Start
+resetGame();
+</script>
+
+</body>
+</html>
