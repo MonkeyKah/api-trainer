@@ -16,6 +16,49 @@
       color: #e67e22;
     }
 
+	  .links-footer{
+  margin: 26px auto 0;
+  width: 600px;
+  max-width: 95%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border, #cfe3ff);
+  background: rgba(255,255,255,0.75);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  text-align: left;
+}
+
+.links-title{
+  font-weight: 700;
+  color: var(--accent-dark, #2f82e6);
+  margin-bottom: 10px;
+}
+
+.links-list{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.links-item{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border, #cfe3ff);
+  background: #e9f3ff;
+  color: #103a6e;
+  font-size: 0.98rem;
+  transition: 0.2s;
+}
+
+.links-item:hover{
+  transform: translateY(-1px);
+  background: #d9ecff;
+}
+	  
     .card {
       background: #fff;
       border-radius: 16px;
@@ -1367,7 +1410,15 @@ input.addEventListener("keydown", (e) => {
 nextWord();
 </script>
 
+<footer class="links-footer">
+  <div class="links-title">Autres liens utiles :</div>
+  <div class="links-list">
+    <a class="links-item" href="Grammar-trainer.html">🧠 Grammar Trainer</a>
+  </div>
+</footer>
+	
 </body>
 </html>
+
 
 
