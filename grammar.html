@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grammar Trainer</title>
+  <title>Entraîne-toi à la grammaire (traduction) 🇬🇧</title>
   <style>
     :root{
       --bg: #f2f8ff;
@@ -250,7 +250,7 @@
   <div class="page-message">
     <p>Bonjour tout le monde ! <br><br>
 Le but de ce module est de vous permettre de vous entrainer à traduire des phrases en choisissant ou interpretant le bon aspect/modal. <br>
-Le module exige une traduction quasi-parfaite, c'est parfois un peu tricky. Si tu estimes que tu as bon, tu peux cliquer sur "Mais j'avais bon ! " et le point sera validé. Que la réponse soit bonne ou mauvaise, une explication apparaitra. N'hésitez pas à vérifier par vous même si y'a un doute, il peut y avoir plusieurs solutions.<br> <br>
+Le module exige une traduction quasi-parfaite, c'est parfois un peu tricky. Si tu estimes que tu as bon, tu peux cliquer sur "Mais j'avais bon ! " et le point sera validé. Que la réponse soit bonne ou mauvaise, une explication apparaitra. N'hésitez pas à vérifier par vous même si y'a un doute, il y peut y avoir un doute. (Le contexte n'est pas forcement toujours précisé.)<br> <br>
 Si vous avez une idée, une suggestion d'amélioration, ou si vous trouvez une coquille, ou si certaines phrases peuvent être améliorées, vous pouvez m'envoyer un mail à cette adresse : themonkeyrudi@gmail.com
           </p>
   </div>
@@ -290,976 +290,1412 @@ Si vous avez une idée, une suggestion d'amélioration, ou si vous trouvez une c
 const items = [
 {
   fr: "Rarement ai-je vu une telle erreur.",
-  en: "Rarely have I seen such a mistake.",
-  explain: "Inversion après adverbe négatif placé en tête de phrase. On inverse auxiliaire et sujet."
+  en: [
+    "Rarely have I seen such a mistake.",
+    "Rarely have I ever seen such a mistake."
+  ],
+  explain: "Inversion obligatoire après un adverbe négatif placé en tête de phrase. Auxiliaire + sujet. 'Ever' renforce l'idée d'expérience."
 },
 {
   fr: "À peine était-il arrivé qu'il est reparti.",
-  en: "Hardly had he arrived when he left.",
-  explain: "Structure formelle avec inversion : Hardly + past perfect + when + prétérit."
+  en: [
+    "Hardly had he arrived when he left.",
+    "No sooner had he arrived than he left."
+  ],
+  explain: "Structure formelle avec inversion : Hardly/No sooner + past perfect + when/than + prétérit."
 },
 {
   fr: "Ce n'est qu'après son départ que j'ai compris.",
-  en: "It was only after he left that I understood.",
-  explain: "Cleft sentence pour mettre l'accent sur un complément circonstanciel."
+  en: [
+    "It was only after he left that I understood."
+  ],
+  explain: "Cleft sentence pour focaliser sur le complément circonstanciel. Structure emphatique."
 },
 {
   fr: "C'est lui qui a cassé la fenêtre.",
-  en: "It was he who broke the window.",
-  explain: "Phrase emphatique (cleft) pour focaliser sur le sujet."
+  en: [
+    "It was he who broke the window.",
+    "It was him who broke the window."
+  ],
+  explain: "Phrase emphatique (cleft). 'He' est plus formel ; 'him' est courant à l’oral."
 },
 {
   fr: "Si j'avais étudié, j'aurais un meilleur travail aujourd'hui.",
-  en: "If I had studied, I would have a better job today.",
-  explain: "Mixed conditional : cause passée avec conséquence présente."
+  en: [
+    "If I had studied, I would have a better job today."
+  ],
+  explain: "Mixed conditional : cause passée (past perfect) → conséquence présente (would + base)."
 },
 {
   fr: "S'il était plus organisé, il aurait réussi.",
-  en: "If he were more organised, he would have succeeded.",
-  explain: "Mixed conditional inverse : condition irréelle présente avec conséquence passée."
+  en: [
+    "If he were more organised, he would have succeeded.",
+    "If he was more organised, he would have succeeded."
+  ],
+  explain: "Mixed conditional inversé : condition irréelle présente → conséquence passée. 'Were' est plus formel."
 },
 {
   fr: "Il aurait dû être plus prudent.",
-  en: "He should have been more careful.",
+  en: [
+    "He should have been more careful."
+  ],
   explain: "Should have + participe passé : reproche concernant le passé."
 },
 {
   fr: "Il n'a pas pu comprendre.",
-  en: "He couldn't have understood.",
-  explain: "Couldn't have + participe passé : impossibilité logique dans le passé."
+  en: [
+    "He couldn't understand.",
+    "He was unable to understand."
+  ],
+  explain: "Incapacité factuelle passée. On évite 'couldn't have understood' sauf si déduction logique."
 },
 {
   fr: "Il aurait pu gagner.",
-  en: "He might have won.",
-  explain: "Might have + participe passé : possibilité passée non certaine."
+  en: [
+    "He might have won.",
+    "He could have won."
+  ],
+  explain: "Possibilité passée non réalisée. 'Might have' = plus hypothétique ; 'could have' = capacité ou possibilité."
 },
 {
   fr: "Elle aurait mieux fait de rester.",
-  en: "She would have been better off staying.",
-  explain: "Structure idiomatique pour exprimer un meilleur choix passé."
+  en: [
+    "She should have stayed.",
+    "She would have been better off staying."
+  ],
+  explain: "Conseil non suivi dans le passé. Deux formulations naturelles."
 },
 {
   fr: "Plus tu travailles, plus tu progresses.",
-  en: "The more you work, the more you improve.",
-  explain: "Structure comparative corrélative : the + comparative, the + comparative."
+  en: [
+    "The more you work, the more you improve."
+  ],
+  explain: "Comparative correlative : the + comparative, the + comparative."
 },
 {
   fr: "Je n'ai jamais vu quelque chose d'aussi étrange.",
-  en: "I have never seen anything so strange.",
-  explain: "So + adjectif pour intensité. Present perfect pour expérience jusqu'à maintenant."
+  en: [
+    "I have never seen anything so strange.",
+    "I have never seen anything that strange."
+  ],
+  explain: "Present perfect pour expérience jusqu'à maintenant."
 },
 {
   fr: "Il parle comme s'il avait tout prévu.",
-  en: "He talks as if he had planned everything.",
-  explain: "As if + past perfect pour exprimer une irréalité passée."
+  en: [
+    "He talks as if he had planned everything."
+  ],
+  explain: "As if + past perfect : irréel portant sur une action antérieure."
 },
 {
   fr: "Je préférerais que tu ne dises rien.",
-  en: "I would rather you didn't say anything.",
+  en: [
+    "I would rather you didn't say anything."
+  ],
   explain: "Would rather + sujet + prétérit : souhait irréel au présent."
 },
 {
   fr: "Il est grand temps que tu partes.",
-  en: "It is high time you left.",
-  explain: "High time + prétérit : idée d'urgence avec forme passée irréelle."
+  en: [
+    "It is high time you left."
+  ],
+  explain: "High time + prétérit : urgence exprimée avec forme irréelle."
 },
 {
   fr: "Non seulement il a menti, mais il a aussi triché.",
-  en: "Not only did he lie, but he also cheated.",
-  explain: "Inversion après 'not only' en tête de phrase."
+  en: [
+    "Not only did he lie, but he also cheated."
+  ],
+  explain: "Inversion après 'not only' placé en tête."
 },
 {
   fr: "Je n'avais jamais travaillé aussi dur.",
-  en: "I had never worked so hard.",
-  explain: "Past perfect pour expérience antérieure à un moment passé implicite."
+  en: [
+    "I had never worked so hard."
+  ],
+  explain: "Past perfect : expérience antérieure à un moment passé implicite."
 },
 {
   fr: "Elle agit comme si elle ne savait rien.",
-  en: "She acts as though she knew nothing.",
-  explain: "As though + prétérit pour irréel au présent."
+  en: [
+    "She acts as though she knew nothing.",
+    "She acts as if she knew nothing."
+  ],
+  explain: "As if / as though + prétérit pour irréel au présent."
 },
 {
   fr: "Il a fini par admettre qu'il s'était trompé.",
-  en: "He ended up admitting that he had been wrong.",
+  en: [
+    "He ended up admitting that he had been wrong."
+  ],
   explain: "End up + ING + past perfect pour marquer l'antériorité."
 },
 {
   fr: "Je suis supposé finir aujourd'hui.",
-  en: "I am supposed to finish today.",
+  en: [
+    "I am supposed to finish today."
+  ],
   explain: "Be supposed to : obligation attendue ou plan officiel."
 },
 {
   fr: "Il semble avoir été surpris.",
-  en: "He seems to have been surprised.",
+  en: [
+    "He seems to have been surprised."
+  ],
   explain: "Seem + to have been + participe passé : antériorité au passif."
 },
 {
   fr: "Il est peu probable qu'il accepte.",
-  en: "He is unlikely to accept.",
-  explain: "Be unlikely to + base verbale : probabilité faible."
+  en: [
+    "He is unlikely to accept."
+  ],
+  explain: "Be unlikely to + base verbale : faible probabilité."
 },
 {
   fr: "Elle est censée être en train de travailler.",
-  en: "She is supposed to be working.",
+  en: [
+    "She is supposed to be working."
+  ],
   explain: "Be supposed to + BE-ING : action attendue en cours."
 },
 {
   fr: "Je ne me rappelle pas avoir dit cela.",
-  en: "I don't remember having said that.",
-  explain: "Remember + having + participe passé : action antérieure au souvenir."
+  en: [
+    "I don't remember having said that."
+  ],
+  explain: "Remember + having + participe passé : antériorité."
 },
 {
   fr: "Il s'est avéré être plus compétent que prévu.",
-  en: "He turned out to be more competent than expected.",
-  explain: "Turn out to + base verbale pour résultat inattendu."
+  en: [
+    "He turned out to be more competent than expected."
+  ],
+  explain: "Turn out to + base verbale : résultat inattendu."
 },
 {
   fr: "Cela fait deux heures que je l'attends.",
-  en: "I have been waiting for him for two hours.",
-  explain: "Structure française avec 'cela fait' → présent perfect continuous en anglais pour exprimer une action commencée dans le passé et toujours en cours."
+  en: [
+    "I have been waiting for him for two hours.",
+    "I have been waiting for her for two hours."
+  ],
+  explain: "Structure 'cela fait + durée' → present perfect continuous. Action commencée dans le passé et toujours en cours."
 },
 {
   fr: "Ça fait longtemps que je ne l'ai pas vu.",
-  en: "I haven't seen him for a long time.",
-  explain: "On exprime une durée jusqu'au présent → present perfect simple."
+  en: [
+    "I haven't seen him for a long time.",
+    "I haven't seen her for a long time."
+  ],
+  explain: "Durée jusqu'au présent → present perfect simple."
 },
 {
-  fr: "Il est en train de toujours se plaindre.",
-  en: "He is always complaining.",
-  explain: "Always + BE-ING exprime une irritation ou un comportement agaçant répété."
+  fr: "Il est toujours en train de se plaindre.",
+  en: [
+    "He is always complaining."
+  ],
+  explain: "Always + BE-ING → irritation ou comportement agaçant répété."
 },
 {
   fr: "Je commence à comprendre.",
-  en: "I am beginning to understand.",
-  explain: "Begin peut prendre la forme BE-ING pour insister sur un processus progressif."
+  en: [
+    "I am beginning to understand.",
+    "I am starting to understand."
+  ],
+  explain: "Begin/Start peuvent prendre BE-ING pour insister sur un processus progressif."
 },
 {
   fr: "Il a fini par accepter.",
-  en: "He ended up accepting.",
-  explain: "End up + ING exprime le résultat final inattendu d'une situation."
+  en: [
+    "He ended up accepting."
+  ],
+  explain: "End up + ING → résultat final inattendu."
 },
 {
   fr: "Il s'est mis à rire.",
-  en: "He started laughing.",
-  explain: "Start + ING : déclenchement d'une action."
+  en: [
+    "He started laughing.",
+    "He began to laugh."
+  ],
+  explain: "Start/Begin + ING ou to + base → déclenchement d'une action."
 },
 {
   fr: "Je pensais qu'il viendrait.",
-  en: "I thought he would come.",
-  explain: "Discours indirect : 'will' devient 'would' après un verbe introducteur au passé."
+  en: [
+    "I thought he would come."
+  ],
+  explain: "Discours indirect : 'will' devient 'would' après verbe introducteur au passé."
 },
 {
   fr: "Je croyais qu'il était parti.",
-  en: "I thought he had left.",
-  explain: "Past perfect pour marquer l'antériorité par rapport au moment où je pensais."
+  en: [
+    "I thought he had left."
+  ],
+  explain: "Past perfect pour marquer l'antériorité par rapport au moment de pensée."
 },
 {
   fr: "Il s'est avéré avoir raison.",
-  en: "He turned out to be right.",
-  explain: "Turn out to + base verbale : résultat inattendu ou découverte."
+  en: [
+    "He turned out to be right."
+  ],
+  explain: "Turn out to + base verbale : résultat inattendu."
 },
 {
   fr: "Elle prétend avoir fini.",
-  en: "She claims to have finished.",
-  explain: "Claim + to have + participe passé : antériorité par rapport au moment de parole."
+  en: [
+    "She claims to have finished."
+  ],
+  explain: "Claim + to have + participe passé : antériorité."
 },
 {
   fr: "Je regrette de lui avoir parlé.",
-  en: "I regret having talked to him.",
-  explain: "Regret + ING pour exprimer un regret concernant une action passée."
+  en: [
+    "I regret having spoken to him.",
+    "I regret having talked to him."
+  ],
+  explain: "Regret + ING pour un regret concernant une action passée."
 },
 {
   fr: "Je regrette de devoir partir.",
-  en: "I regret having to leave.",
-  explain: "Regret + ING : on exprime un regret au moment présent concernant une situation."
+  en: [
+    "I regret having to leave."
+  ],
+  explain: "Regret + ING → regret exprimé au moment présent."
 },
 {
   fr: "Il s'est arrêté pour fumer.",
-  en: "He stopped to smoke.",
-  explain: "Stop + to + base verbale : arrêt dans le but de faire quelque chose."
+  en: [
+    "He stopped to smoke."
+  ],
+  explain: "Stop + to + base → arrêt dans le but de faire quelque chose."
 },
 {
   fr: "Il a arrêté de fumer.",
-  en: "He stopped smoking.",
-  explain: "Stop + ING : cessation définitive d'une action."
+  en: [
+    "He stopped smoking."
+  ],
+  explain: "Stop + ING → cessation définitive d'une action."
 },
 {
   fr: "Je me souviens l'avoir vu.",
-  en: "I remember seeing him.",
-  explain: "Remember + ING : souvenir d'une action passée."
+  en: [
+    "I remember seeing him.",
+    "I remember seeing her."
+  ],
+  explain: "Remember + ING → souvenir d'une action passée."
 },
 {
   fr: "N'oublie pas de fermer la porte.",
-  en: "Don't forget to close the door.",
-  explain: "Forget + to + base verbale : action à accomplir dans le futur."
+  en: [
+    "Don't forget to close the door."
+  ],
+  explain: "Forget + to + base → action à accomplir dans le futur."
 },
 {
   fr: "Il semble qu'il pleuve.",
-  en: "It seems to be raining.",
-  explain: "Seem + to be + ING pour exprimer une impression sur une action en cours."
+  en: [
+    "It seems to be raining."
+  ],
+  explain: "Seem + to be + ING pour impression concernant une action en cours."
 },
 {
   fr: "Elle a l'air d'avoir compris.",
-  en: "She seems to have understood.",
-  explain: "Seem + to have + participe passé : impression concernant une action passée."
+  en: [
+    "She seems to have understood."
+  ],
+  explain: "Seem + to have + participe passé : antériorité."
 },
 {
   fr: "Il m'a fait réparer ma voiture.",
-  en: "He made me repair my car.",
-  explain: "Make + complément + base verbale (sans 'to') pour exprimer la contrainte."
+  en: [
+    "He made me repair my car."
+  ],
+  explain: "Make + complément + base verbale (sans 'to') → contrainte."
 },
 {
   fr: "Il m'a fait réparer ma voiture par un mécanicien.",
-  en: "He had my car repaired by a mechanic.",
+  en: [
+    "He had my car repaired by a mechanic."
+  ],
   explain: "Causatif 'have something done' : on fait faire l'action par quelqu'un d'autre."
 },
 {
   fr: "Je me suis fait couper les cheveux.",
-  en: "I had my hair cut.",
+  en: [
+    "I had my hair cut."
+  ],
   explain: "Structure causative : sujet subit l'action réalisée par un tiers."
 },
 {
   fr: "Il est trop jeune pour conduire.",
-  en: "He is too young to drive.",
-  explain: "Too + adjectif + to : idée d'impossibilité."
+  en: [
+    "He is too young to drive."
+  ],
+  explain: "Too + adjectif + to → impossibilité."
 },
 {
   fr: "Il est assez grand pour atteindre l'étagère.",
-  en: "He is tall enough to reach the shelf.",
-  explain: "Adjectif + enough + to : suffisance."
+  en: [
+    "He is tall enough to reach the shelf."
+  ],
+  explain: "Adjectif + enough + to → suffisance."
 },
 {
   fr: "Je préfère rester à la maison.",
-  en: "I would rather stay at home.",
-  explain: "Would rather + base verbale : préférence."
+  en: [
+    "I would rather stay at home."
+  ],
+  explain: "Would rather + base verbale → préférence."
 },
 {
   fr: "Je préférerais que tu partes.",
-  en: "I would rather you left.",
-  explain: "Would rather + sujet + prétérit : souhait irréel concernant quelqu'un d'autre."
+  en: [
+    "I would rather you left."
+  ],
+  explain: "Would rather + sujet + prétérit → souhait irréel concernant quelqu'un d'autre."
 },
 {
   fr: "Je suis en train d'écrire un mail.",
-  en: "I am writing an email.",
-  explain: "BE-ING : action en cours au moment de l'énonciation. On insiste sur le déroulement."
+  en: [
+    "I am writing an email.",
+    "I'm writing an email."
+  ],
+  explain: "BE-ING : action en cours au moment de l'énonciation."
 },
 {
   fr: "J'écris souvent des mails le soir.",
-  en: "I often write emails in the evening.",
-  explain: "Présent simple : habitude régulière, renforcée par l'adverbe de fréquence."
+  en: [
+    "I often write emails in the evening."
+  ],
+  explain: "Présent simple + adverbe de fréquence → habitude régulière."
 },
 {
   fr: "Elle travaille beaucoup en ce moment.",
-  en: "She is working a lot at the moment.",
-  explain: "BE-ING + marqueur temporel ('at the moment') : situation temporaire et actuelle."
+  en: [
+    "She is working a lot at the moment."
+  ],
+  explain: "BE-ING + marqueur temporel → situation temporaire."
 },
 {
   fr: "Elle travaille beaucoup en général.",
-  en: "She works a lot in general.",
-  explain: "Présent simple : caractéristique générale et stable."
+  en: [
+    "She works a lot in general."
+  ],
+  explain: "Présent simple → caractéristique générale."
 },
 {
   fr: "J'étais en train de lire quand il a appelé.",
-  en: "I was reading when he called.",
-  explain: "Past continuous pour l'arrière-plan + prétérit pour l'événement ponctuel."
+  en: [
+    "I was reading when he called."
+  ],
+  explain: "Past continuous (arrière-plan) + prétérit (événement ponctuel)."
 },
 {
   fr: "Il regardait par la fenêtre pendant qu'elle parlait.",
-  en: "He was looking out of the window while she was talking.",
-  explain: "Deux actions simultanées en cours dans le passé → past continuous."
+  en: [
+    "He was looking out of the window while she was talking."
+  ],
+  explain: "Deux actions simultanées en cours dans le passé."
 },
 {
   fr: "Ils ont fini avant que le professeur arrive.",
-  en: "They had finished before the teacher arrived.",
+  en: [
+    "They had finished before the teacher arrived."
+  ],
   explain: "Past perfect : action terminée avant un autre moment passé."
 },
 {
   fr: "Je n'avais jamais vu ça avant.",
-  en: "I had never seen that before.",
-  explain: "Past perfect pour exprimer une expérience antérieure à un moment passé."
+  en: [
+    "I had never seen that before."
+  ],
+  explain: "Past perfect pour expérience antérieure à un moment passé."
 },
 {
   fr: "Il travaille ici depuis ce matin.",
-  en: "He has been working here since this morning.",
+  en: [
+    "He has been working here since this morning."
+  ],
   explain: "Present perfect continuous : action commencée dans le passé et toujours en cours."
 },
 {
   fr: "Il travaille ici depuis longtemps.",
-  en: "He has worked here for a long time.",
-  explain: "Present perfect simple : on insiste davantage sur le résultat ou le bilan que sur le processus."
+  en: [
+    "He has worked here for a long time.",
+    "He has been working here for a long time."
+  ],
+  explain: "Present perfect simple (bilan) ou continuous (durée/processus). Les deux sont naturels selon l’angle choisi."
 },
 {
   fr: "Elle va probablement refuser.",
-  en: "She will probably refuse.",
-  explain: "Will utilisé pour une prédiction ou une estimation personnelle."
+  en: [
+    "She will probably refuse.",
+    "She is likely to refuse."
+  ],
+  explain: "Will pour prédiction neutre. 'Be likely to' exprime aussi une forte probabilité."
 },
 {
   fr: "Je vais lui parler ce soir.",
-  en: "I am going to talk to him tonight.",
-  explain: "Be going to : intention déjà formée avant le moment de parole."
+  en: [
+    "I am going to talk to him tonight.",
+    "I'm going to talk to him tonight."
+  ],
+  explain: "Be going to : intention déjà formée."
 },
 {
   fr: "Le cours commence à 9 heures.",
-  en: "The class starts at 9 o'clock.",
-  explain: "Présent simple pour un emploi du temps ou un horaire officiel."
+  en: [
+    "The class starts at 9 o'clock."
+  ],
+  explain: "Présent simple pour emploi du temps officiel."
 },
 {
   fr: "Je me demande pourquoi il est parti.",
-  en: "I wonder why he left.",
+  en: [
+    "I wonder why he left."
+  ],
   explain: "Question indirecte : pas d'inversion sujet-verbe."
 },
 {
   fr: "Je ne sais pas ce qu'il faisait.",
-  en: "I don't know what he was doing.",
-  explain: "Discours indirect + past continuous pour une action en cours dans le passé."
+  en: [
+    "I don't know what he was doing."
+  ],
+  explain: "Discours indirect + past continuous pour action en cours dans le passé."
 },
 {
   fr: "Il doit être déjà parti.",
-  en: "He must have already left.",
-  explain: "Must épistémique + have-en : déduction logique sur le passé."
+  en: [
+    "He must have already left."
+  ],
+  explain: "Must + have + participe passé : déduction logique sur le passé."
 },
 {
   fr: "Il pourrait venir plus tard.",
-  en: "He might come later.",
-  explain: "Might exprime une possibilité faible ou incertaine."
+  en: [
+    "He might come later.",
+    "He could come later."
+  ],
+  explain: "Possibilité future incertaine."
 },
 {
   fr: "Tu peux entrer.",
-  en: "You may come in.",
-  explain: "May radical : permission donnée par le locuteur."
+  en: [
+    "You may come in.",
+    "You can come in."
+  ],
+  explain: "May (permission formelle), can (permission courante)."
 },
 {
   fr: "Il n'avait pas besoin de venir.",
-  en: "He didn't need to come.",
-  explain: "Need au prétérit : absence d'obligation passée."
+  en: [
+    "He didn't need to come.",
+    "He didn't have to come."
+  ],
+  explain: "Absence d'obligation passée. Les deux formes sont naturelles."
 },
 {
   fr: "Il n'aurait pas dû faire ça.",
-  en: "He shouldn't have done that.",
-  explain: "Shouldn't have + participe passé : reproche ou regret concernant le passé."
+  en: [
+    "He shouldn't have done that."
+  ],
+  explain: "Shouldn't have + participe passé : reproche concernant le passé."
 },
 {
   fr: "Cette maison a été construite récemment.",
-  en: "This house has been built recently.",
+  en: [
+    "This house has been built recently."
+  ],
   explain: "Present perfect passif : action passée avec effet visible dans le présent."
 },
 {
   fr: "La décision sera prise demain.",
-  en: "The decision will be made tomorrow.",
-  explain: "Futur passif : l'accent est mis sur l'action, pas sur l'agent."
+  en: [
+    "The decision will be made tomorrow."
+  ],
+  explain: "Futur passif : accent sur l'action plutôt que sur l'agent."
 },
 {
   fr: "Si j'étais toi, je refuserais.",
-  en: "If I were you, I would refuse.",
-  explain: "Second conditional : situation hypothétique irréelle dans le présent."
+  en: [
+    "If I were you, I would refuse.",
+    "If I was you, I would refuse."
+  ],
+  explain: "Second conditional. 'Were' est plus formel."
 },
 {
   fr: "Il parle comme s'il était le chef.",
-  en: "He talks as if he were the boss.",
-  explain: "As if + prétérit (were) pour exprimer l'irréel au présent."
+  en: [
+    "He talks as if he were the boss.",
+    "He talks as if he was the boss."
+  ],
+  explain: "As if + prétérit pour exprimer l'irréel au présent."
 },
 {
   fr: "Elle a continué à travailler malgré la fatigue.",
-  en: "She kept working despite being tired.",
-  explain: "Keep + ING : action qui se prolonge dans le temps."
+  en: [
+    "She kept working despite being tired."
+  ],
+  explain: "Keep + ING : action prolongée."
 },
 {
   fr: "Je travaille ici depuis deux mois.",
-  en: "I have been working here for two months.",
-  explain: "Present perfect continuous : l'action a commencé dans le passé et continue maintenant. On insiste sur la durée et le processus."
+  en: [
+    "I have been working here for two months."
+  ],
+  explain: "Present perfect continuous : action commencée dans le passé et toujours en cours. Accent sur la durée."
 },
 {
   fr: "Elle pleurait depuis une heure quand je suis arrivé.",
-  en: "She had been crying for an hour when I arrived.",
-  explain: "Past perfect continuous : action en cours avant un moment passé ('arrived'). On insiste sur la durée avant l'événement."
+  en: [
+    "She had been crying for an hour when I arrived."
+  ],
+  explain: "Past perfect continuous : action en cours avant un moment passé."
 },
 {
   fr: "Ils construisent un nouveau pont.",
-  en: "They are building a new bridge.",
-  explain: "BE-ING : action temporaire en cours au moment où l'on parle."
+  en: [
+    "They are building a new bridge."
+  ],
+  explain: "BE-ING : action temporaire en cours."
 },
 {
   fr: "Un nouveau pont est en train d'être construit.",
-  en: "A new bridge is being built.",
-  explain: "Passif progressif : BE + being + participe passé pour exprimer une action subie en cours."
+  en: [
+    "A new bridge is being built."
+  ],
+  explain: "Passif progressif : BE + being + participe passé."
 },
 {
   fr: "Il aura terminé avant midi.",
-  en: "He will have finished before noon.",
+  en: [
+    "He will have finished before noon."
+  ],
   explain: "Future perfect : action accomplie avant un moment futur précis."
 },
 {
   fr: "Je vais probablement partir tôt.",
-  en: "I will probably leave early.",
+  en: [
+    "I will probably leave early."
+  ],
   explain: "Will + adverbe : prédiction ou décision spontanée."
 },
 {
   fr: "Je pars demain matin.",
-  en: "I am leaving tomorrow morning.",
-  explain: "BE-ING pour futur planifié et organisé."
+  en: [
+    "I am leaving tomorrow morning."
+  ],
+  explain: "BE-ING pour futur planifié."
 },
 {
   fr: "Le train part à 6 h.",
-  en: "The train leaves at 6 a.m.",
-  explain: "Présent simple pour horaires officiels et programmations fixes."
+  en: [
+    "The train leaves at 6 a.m."
+  ],
+  explain: "Présent simple pour horaires officiels."
 },
 {
   fr: "Si tu chauffes l'eau, elle bout.",
-  en: "If you heat water, it boils.",
-  explain: "Zero conditional : vérité générale (présent + présent)."
+  en: [
+    "If you heat water, it boils."
+  ],
+  explain: "Zero conditional : vérité générale."
 },
 {
   fr: "S'il pleut, nous resterons à la maison.",
-  en: "If it rains, we will stay at home.",
+  en: [
+    "If it rains, we will stay at home."
+  ],
   explain: "First conditional : situation possible dans le futur."
 },
 {
   fr: "Je me demande s'il viendra.",
-  en: "I wonder if he will come.",
-  explain: "Question indirecte introduite par 'if' → on garde 'will'."
+  en: [
+    "I wonder if he will come."
+  ],
+  explain: "Question indirecte → on garde 'will'."
 },
 {
   fr: "Elle parle comme si elle savait tout.",
-  en: "She talks as if she knew everything.",
-  explain: "As if + prétérit pour exprimer une situation irréelle au présent."
+  en: [
+    "She talks as if she knew everything."
+  ],
+  explain: "As if + prétérit pour irréel au présent."
 },
 {
   fr: "Elle parlait comme si elle avait tout compris.",
-  en: "She was talking as if she had understood everything.",
+  en: [
+    "She was talking as if she had understood everything."
+  ],
   explain: "As if + past perfect pour irréel dans le passé."
 },
 {
   fr: "Il semble être fatigué.",
-  en: "He seems to be tired.",
-  explain: "Structure 'seem to' : infinitif après seem."
+  en: [
+    "He seems to be tired."
+  ],
+  explain: "Seem + to + base verbale."
 },
 {
   fr: "Il semble avoir oublié.",
-  en: "He seems to have forgotten.",
-  explain: "Seem + to have + participe passé : antériorité."
+  en: [
+    "He seems to have forgotten."
+  ],
+  explain: "Seem + to have + participe passé (antériorité)."
 },
 {
   fr: "On m'a dit qu'il était malade.",
-  en: "I was told that he was ill.",
-  explain: "Passif impersonnel : on met l'accent sur le destinataire de l'information."
+  en: [
+    "I was told that he was ill."
+  ],
+  explain: "Passif impersonnel : accent sur le destinataire."
 },
 {
   fr: "Il est censé arriver bientôt.",
-  en: "He is supposed to arrive soon.",
-  explain: "Be supposed to : obligation attendue / norme."
+  en: [
+    "He is supposed to arrive soon."
+  ],
+  explain: "Be supposed to : obligation attendue."
 },
 {
   fr: "Je ferais mieux de partir.",
-  en: "I had better leave.",
+  en: [
+    "I had better leave."
+  ],
   explain: "Had better : conseil fort ou recommandation."
 },
 {
   fr: "Tu n'aurais pas dû dire ça.",
-  en: "You shouldn't have said that.",
-  explain: "Shouldn't have + participe passé : reproche concernant le passé."
+  en: [
+    "You shouldn't have said that."
+  ],
+  explain: "Shouldn't have + participe passé : reproche passé."
 },
 {
   fr: "Il doit travailler dur ces jours-ci.",
-  en: "He must be working hard these days.",
-  explain: "Must + BE-ING : déduction sur une action en cours."
+  en: [
+    "He must be working hard these days."
+  ],
+  explain: "Must + BE-ING : déduction sur action en cours."
 },
 {
   fr: "Elle risque de tomber.",
-  en: "She may fall.",
-  explain: "May : possibilité incertaine."
+  en: [
+    "She may fall.",
+    "She might fall."
+  ],
+  explain: "May/Might : possibilité incertaine."
 },
 {
   fr: "Elle a failli tomber.",
-  en: "She almost fell.",
-  explain: "Almost + prétérit : action presque réalisée dans le passé."
+  en: [
+    "She almost fell."
+  ],
+  explain: "Almost + prétérit : action presque réalisée."
 },
 {
   fr: "Je n'ai pas l'habitude de me lever tôt.",
-  en: "I am not used to getting up early.",
+  en: [
+    "I am not used to getting up early."
+  ],
   explain: "Be used to + ING : habitude actuelle."
 },
 {
   fr: "Il s'est habitué à travailler seul.",
-  en: "He has got used to working alone.",
-  explain: "Get used to + ING : processus d'adaptation."
+  en: [
+    "He has got used to working alone.",
+    "He has gotten used to working alone."
+  ],
+  explain: "Get used to + ING : processus d'adaptation. 'Gotten' = variante américaine."
 },
 {
   fr: "Elle continue de parler.",
-  en: "She keeps talking.",
+  en: [
+    "She keeps talking."
+  ],
   explain: "Keep + ING : action qui continue."
 },
-  {
-    fr: "Je vais au travail en bus.",
-    en: "I go to work by bus.",
-    explain: "On utilise le present simple car il s'agit d'une habitude. Ce n'est pas une action en cours au moment où l'on parle, mais une routine régulière. Le marqueur implicite de fréquence justifie le présent simple."
-  },
-  {
-    fr: "Je suis en train d'aller au travail.",
-    en: "I am going to work.",
-    explain: "Ici, l'action est en cours au moment de l'énonciation. On choisit donc BE + ING pour exprimer un processus en déroulement. Ce n'est pas une habitude, mais une situation actuelle."
-  },
-  {
-    fr: "Il travaille ici.",
-    en: "He works here.",
-    explain: "Le présent simple exprime une situation stable ou durable. On ne décrit pas une action momentanée, mais une réalité générale concernant son emploi."
-  },
-  {
-    fr: "Il est en train de travailler.",
-    en: "He is working.",
-    explain: "BE-ING indique que l'action est en cours au moment précis où l'on parle. On insiste sur le déroulement du processus."
-  },
-  {
-    fr: "Elle parle trois langues.",
-    en: "She speaks three languages.",
-    explain: "On exprime une capacité générale et permanente. Il ne s'agit pas d'une action en train de se produire, donc le présent simple est requis."
-  },
-  {
-    fr: "Elle est en train de parler.",
-    en: "She is speaking.",
-    explain: "On décrit ici une action observable au moment présent. L'aspect BE-ING marque le processus en cours."
-  },
-  {
-    fr: "Je comprends.",
-    en: "I understand.",
-    explain: "Understand est un verbe d'état (verbe statif). Il décrit un état mental et non une action dynamique. Les verbes statifs ne prennent généralement pas la forme BE-ING."
-  },
-  {
-    fr: "Je suis en train de comprendre.",
-    en: "I am understanding.",
-    explain: "Cette forme est rare mais possible si l'on veut insister sur un processus progressif de compréhension. On passe d'un état stable à un processus mental en évolution."
-  },
-  {
-    fr: "Il pleut.",
-    en: "It is raining.",
-    explain: "Les phénomènes météorologiques en cours s'expriment généralement avec BE-ING. On décrit une situation temporaire observable."
-  },
-  {
-    fr: "L'eau bout à 100 degrés.",
-    en: "Water boils at 100°C.",
-    explain: "Il s'agit d'une vérité générale scientifique. On utilise le présent simple pour exprimer une loi permanente."
-  },
-  {
-    fr: "Je lis tous les soirs.",
-    en: "I read every evening.",
-    explain: "Le marqueur 'every evening' indique une habitude régulière. On choisit donc le présent simple."
-  },
-  {
-    fr: "Je lis en ce moment.",
-    en: "I am reading at the moment.",
-    explain: "Le marqueur temporel 'at the moment' indique une action temporaire en cours. On emploie BE-ING."
-  },
-  {
-    fr: "Il fume toujours.",
-    en: "He always smokes.",
-    explain: "Always + présent simple exprime une habitude répétée. Il n'y a pas d'idée de processus en cours."
-  },
-  {
-    fr: "Il est toujours en train de fumer.",
-    en: "He is always smoking.",
-    explain: "Always + BE-ING exprime souvent une irritation ou une critique. On insiste sur le caractère agaçant et répété du comportement."
-  },
-  {
-    fr: "Je pense que tu as raison.",
-    en: "I think you are right.",
-    explain: "Think, lorsqu'il signifie 'avoir une opinion', est statif. On utilise donc le présent simple."
-  },
-  {
-    fr: "Je suis en train de penser à toi.",
-    en: "I am thinking about you.",
-    explain: "Think, lorsqu'il signifie 'réfléchir' ou 'avoir en tête', devient dynamique. On peut alors utiliser BE-ING pour exprimer le processus mental en cours."
-  },
-  {
-    fr: "On habite près de la mer.",
-    en: "We live near the sea.",
-    explain: "Situation stable et durable : présent simple. Ce n'est pas une action temporaire."
-  },
-  {
-    fr: "On vit chez nos parents en ce moment.",
-    en: "We are living with our parents at the moment.",
-    explain: "La présence de 'at the moment' indique une situation temporaire. On utilise BE-ING pour signaler que ce n'est pas permanent."
-  },
-  {
-    fr: "Il a une voiture.",
-    en: "He has a car.",
-    explain: "Have exprime ici la possession, un état stable. On utilise le présent simple."
-  },
-  {
-    fr: "Il prend une douche.",
-    en: "He is taking a shower.",
-    explain: "Action en cours observable. BE-ING met l'accent sur le déroulement de l'action."
-  },
+{
+  fr: "Je vais au travail en bus.",
+  en: [
+    "I go to work by bus."
+  ],
+  explain: "Présent simple : habitude régulière. On parle d'une routine, pas d'une action en cours."
+},
+{
+  fr: "Je suis en train d'aller au travail.",
+  en: [
+    "I am going to work."
+  ],
+  explain: "BE-ING : action en cours au moment où l'on parle."
+},
+{
+  fr: "Il travaille ici.",
+  en: [
+    "He works here."
+  ],
+  explain: "Présent simple : situation stable ou permanente."
+},
+{
+  fr: "Il est en train de travailler.",
+  en: [
+    "He is working."
+  ],
+  explain: "BE-ING : action en cours."
+},
+{
+  fr: "Elle parle trois langues.",
+  en: [
+    "She speaks three languages."
+  ],
+  explain: "Capacité générale et permanente → présent simple."
+},
+{
+  fr: "Elle est en train de parler.",
+  en: [
+    "She is speaking."
+  ],
+  explain: "Action en cours observable → BE-ING."
+},
+{
+  fr: "Je comprends.",
+  en: [
+    "I understand."
+  ],
+  explain: "Verbe d'état (statif) → pas de forme progressive."
+},
+{
+  fr: "Je suis en train de comprendre.",
+  en: [
+    "I am beginning to understand.",
+    "I am starting to understand."
+  ],
+  explain: "Plutôt que 'I am understanding' (rare), on utilise begin/start pour exprimer le processus progressif."
+},
+{
+  fr: "Il pleut.",
+  en: [
+    "It is raining."
+  ],
+  explain: "Phénomène météorologique en cours → BE-ING."
+},
+{
+  fr: "L'eau bout à 100 degrés.",
+  en: [
+    "Water boils at 100 degrees Celsius.",
+    "Water boils at 100°C."
+  ],
+  explain: "Vérité scientifique générale → présent simple."
+},
+{
+  fr: "Je lis tous les soirs.",
+  en: [
+    "I read every evening."
+  ],
+  explain: "Habitude régulière → présent simple."
+},
+{
+  fr: "Je lis en ce moment.",
+  en: [
+    "I am reading at the moment."
+  ],
+  explain: "Marqueur temporel de situation temporaire → BE-ING."
+},
+{
+  fr: "Il fume toujours.",
+  en: [
+    "He always smokes."
+  ],
+  explain: "Habitude répétée → présent simple."
+},
+{
+  fr: "Il est toujours en train de fumer.",
+  en: [
+    "He is always smoking."
+  ],
+  explain: "Always + BE-ING → irritation ou critique."
+},
+{
+  fr: "Je pense que tu as raison.",
+  en: [
+    "I think you are right."
+  ],
+  explain: "Think (opinion) = verbe statif → présent simple."
+},
+{
+  fr: "Je suis en train de penser à toi.",
+  en: [
+    "I am thinking about you."
+  ],
+  explain: "Think (réfléchir/avoir en tête) = dynamique → BE-ING."
+},
+{
+  fr: "On habite près de la mer.",
+  en: [
+    "We live near the sea."
+  ],
+  explain: "Situation stable → présent simple."
+},
+{
+  fr: "On vit chez nos parents en ce moment.",
+  en: [
+    "We are living with our parents at the moment."
+  ],
+  explain: "Situation temporaire → BE-ING."
+},
+{
+  fr: "Il a une voiture.",
+  en: [
+    "He has a car."
+  ],
+  explain: "Have (possession) = état → présent simple."
+},
+{
+  fr: "Il prend une douche.",
+  en: [
+    "He is taking a shower."
+  ],
+  explain: "Action en cours → BE-ING."
+},
+{
+  fr: "J’ai perdu mes clés, je ne les retrouve pas.",
+  en: [
+    "I have lost my keys; I can't find them.",
+    "I have lost my keys and I can't find them."
+  ],
+  explain: "Present perfect : conséquence actuelle (les clés sont toujours perdues)."
+},
+{
+  fr: "J’ai perdu mes clés hier.",
+  en: [
+    "I lost my keys yesterday."
+  ],
+  explain: "Repère temporel passé fermé → prétérit obligatoire."
+},
+{
+  fr: "Elle a déjà fini.",
+  en: [
+    "She has already finished."
+  ],
+  explain: "Already + present perfect → accomplissement lié au présent."
+},
+{
+  fr: "Tu as déjà vu ce film ?",
+  en: [
+    "Have you already seen this movie?"
+  ],
+  explain: "Question d'expérience → present perfect."
+},
+{
+  fr: "Je n’ai jamais voyagé en Italie.",
+  en: [
+    "I have never travelled to Italy.",
+    "I have never traveled to Italy."
+  ],
+  explain: "Never + present perfect → bilan d'expérience. Spelling UK/US accepté."
+},
+{
+  fr: "Il vit ici depuis 2019.",
+  en: [
+    "He has lived here since 2019.",
+    "He has been living here since 2019."
+  ],
+  explain: "Since + point de départ → present perfect. Simple (bilan) ou continuous (durée/processus)."
+},
+{
+  fr: "Il vit ici depuis trois ans.",
+  en: [
+    "He has lived here for three years.",
+    "He has been living here for three years."
+  ],
+  explain: "For + durée → present perfect. Les deux formes sont naturelles."
+},
+{
+  fr: "Nous venons de manger.",
+  en: [
+    "We have just eaten."
+  ],
+  explain: "Just + present perfect → action très récente avec lien au présent."
+},
+{
+  fr: "Il est parti.",
+  en: [
+    "He has left."
+  ],
+  explain: "Present perfect : conséquence actuelle (il n'est plus là)."
+},
+{
+  fr: "J’ai fini !",
+  en: [
+    "I have finished!"
+  ],
+  explain: "Present perfect pour insister sur l'état actuel (c'est terminé maintenant)."
+},
+{
+  fr: "Je suis allé à Londres l'année dernière.",
+  en: [
+    "I went to London last year."
+  ],
+  explain: "Repère temporel fermé → prétérit."
+},
+{
+  fr: "Il a ouvert la porte puis il est parti.",
+  en: [
+    "He opened the door and then left."
+  ],
+  explain: "Suite d’actions successives dans un récit passé → prétérit."
+},
+{
+  fr: "Elle a appelé hier soir.",
+  en: [
+    "She called last night."
+  ],
+  explain: "Repère temporel précis → prétérit."
+},
+{
+  fr: "Je l’ai vu il y a deux jours.",
+  en: [
+    "I saw him two days ago.",
+    "I saw her two days ago."
+  ],
+  explain: "'Ago' impose le prétérit (moment terminé)."
+},
+{
+  fr: "Il a vécu ici pendant dix ans.",
+  en: [
+    "He lived here for ten years."
+  ],
+  explain: "Durée terminée dans le passé → prétérit."
+},
+{
+  fr: "Il dormait quand je suis arrivé.",
+  en: [
+    "He was sleeping when I arrived."
+  ],
+  explain: "Past continuous (arrière-plan) + prétérit (événement)."
+},
+{
+  fr: "Je regardais la télé à 20 h.",
+  en: [
+    "I was watching TV at 8 p.m."
+  ],
+  explain: "Action en cours à un moment précis du passé → past continuous."
+},
+{
+  fr: "Ils discutaient pendant que je travaillais.",
+  en: [
+    "They were talking while I was working."
+  ],
+  explain: "Deux actions simultanées en cours → past continuous."
+},
+{
+  fr: "Il était déjà parti quand je suis arrivé.",
+  en: [
+    "He had already left when I arrived."
+  ],
+  explain: "Past perfect : action antérieure à un autre moment passé."
+},
+{
+  fr: "Nous avions fini avant qu’il arrive.",
+  en: [
+    "We had finished before he arrived."
+  ],
+  explain: "Past perfect pour marquer l'antériorité."
+},
+{
+  fr: "Je t’appellerai quand j’arriverai.",
+  en: [
+    "I will call you when I arrive."
+  ],
+  explain: "Dans les subordonnées de temps (when), on n'utilise pas 'will'."
+},
+{
+  fr: "Dis-moi quand tu arriveras.",
+  en: [
+    "Tell me when you arrive."
+  ],
+  explain: "Subordonnée de temps → présent simple après 'when'."
+},
+{
+  fr: "Je ne sais pas quand il arrivera.",
+  en: [
+    "I don't know when he will arrive."
+  ],
+  explain: "Question indirecte → 'will' conservé."
+},
+{
+  fr: "Il doit être fatigué.",
+  en: [
+    "He must be tired."
+  ],
+  explain: "Must épistémique → déduction logique au présent."
+},
+{
+  fr: "Il doit avoir oublié.",
+  en: [
+    "He must have forgotten."
+  ],
+  explain: "Must + have + participe passé → déduction sur le passé."
+},
+{
+  fr: "Il peut être à la maison.",
+  en: [
+    "He may be at home.",
+    "He might be at home."
+  ],
+  explain: "Possibilité incertaine → may/might."
+},
+{
+  fr: "Il pourrait être en train de dormir.",
+  en: [
+    "He might be sleeping.",
+    "He could be sleeping."
+  ],
+  explain: "Hypothèse sur action en cours."
+},
+{
+  fr: "Il aurait pu venir.",
+  en: [
+    "He could have come.",
+    "He might have come."
+  ],
+  explain: "Possibilité passée non réalisée."
+},
+{
+  fr: "Quand j'étais enfant, je jouais dehors tous les jours.",
+  en: [
+    "When I was a child, I used to play outside every day.",
+    "When I was a child, I would play outside every day."
+  ],
+  explain: "Used to / would pour habitude passée révolue."
+},
+{
+  fr: "Il fumait beaucoup à l'époque.",
+  en: [
+    "He used to smoke a lot."
+  ],
+  explain: "Habitude passée révolue → used to."
+},
+{
+  fr: "Chaque été, nous allions à la mer.",
+  en: [
+    "Every summer, we would go to the seaside.",
+    "Every summer, we used to go to the seaside."
+  ],
+  explain: "Habitude passée révolue → would / used to. 'Seaside' est plus idiomatique que 'the sea' ici."
+},
+{
+  fr: "Il habitait à Paris avant.",
+  en: [
+    "He used to live in Paris."
+  ],
+  explain: "État passé révolu → used to (plus naturel que would pour un état)."
+},
+{
+  fr: "La porte a été ouverte par le chat.",
+  en: [
+    "The door was opened by the cat."
+  ],
+  explain: "Voix passive au prétérit : accent sur l'action subie."
+},
+{
+  fr: "Le travail est terminé.",
+  en: [
+    "The work is finished.",
+    "The work has been finished."
+  ],
+  explain: "Présent passif (état résultant) ou present perfect passif (action accomplie récemment)."
+},
+{
+  fr: "Le livre a été écrit en 1990.",
+  en: [
+    "The book was written in 1990."
+  ],
+  explain: "Repère temporel passé fermé → prétérit passif."
+},
+{
+  fr: "La maison est en train d'être construite.",
+  en: [
+    "The house is being built."
+  ],
+  explain: "Passif progressif : BE + being + participe passé."
+},
+{
+  fr: "Le projet a été terminé.",
+  en: [
+    "The project has been completed."
+  ],
+  explain: "Present perfect passif : action passée avec effet présent."
+},
+{
+  fr: "Si j'avais de l'argent, je voyagerais.",
+  en: [
+    "If I had money, I would travel."
+  ],
+  explain: "Second conditional : hypothèse irréelle au présent."
+},
+{
+  fr: "Si j'avais su, je serais venu.",
+  en: [
+    "If I had known, I would have come."
+  ],
+  explain: "Third conditional : hypothèse irréelle dans le passé."
+},
+{
+  fr: "Je t'aiderais si je pouvais.",
+  en: [
+    "I would help you if I could."
+  ],
+  explain: "Condition irréelle au présent."
+},
+{
+  fr: "Demain à cette heure-ci, je travaillerai.",
+  en: [
+    "This time tomorrow, I will be working."
+  ],
+  explain: "Future continuous : action en cours à un moment précis du futur."
+},
+{
+  fr: "D'ici l'année prochaine, j'aurai fini.",
+  en: [
+    "By next year, I will have finished."
+  ],
+  explain: "Future perfect : action accomplie avant un moment futur."
+},
+{
+  fr: "Il vient de partir.",
+  en: [
+    "He has just left."
+  ],
+  explain: "Just + present perfect : action très récente."
+},
+{
+  fr: "Il est parti il y a cinq minutes.",
+  en: [
+    "He left five minutes ago."
+  ],
+  explain: "'Ago' → prétérit obligatoire."
+},
+{
+  fr: "As-tu déjà mangé ?",
+  en: [
+    "Have you eaten yet?"
+  ],
+  explain: "Yet en question → present perfect."
+},
+{
+  fr: "J'ai mangé à midi.",
+  en: [
+    "I ate at noon."
+  ],
+  explain: "Repère temporel précis → prétérit."
+},
+{
+  fr: "Il a cassé sa jambe.",
+  en: [
+    "He has broken his leg."
+  ],
+  explain: "Present perfect : conséquence actuelle (jambe toujours cassée)."
+},
+{
+  fr: "Il s'est cassé la jambe en 2018.",
+  en: [
+    "He broke his leg in 2018."
+  ],
+  explain: "Repère passé fermé → prétérit."
+},
+{
+  fr: "Je n'ai pas encore fini.",
+  en: [
+    "I haven't finished yet."
+  ],
+  explain: "Yet + négation → present perfect."
+},
+{
+  fr: "Je n'ai pas fini hier.",
+  en: [
+    "I didn't finish yesterday."
+  ],
+  explain: "Yesterday → prétérit obligatoire."
+},
+{
+  fr: "C'est la première fois que je viens ici.",
+  en: [
+    "This is the first time I have come here."
+  ],
+  explain: "Structure fixe : 'This is the first time' + present perfect."
+},
+{
+  fr: "Je connais la réponse.",
+  en: [
+    "I know the answer."
+  ],
+  explain: "Verbe statif → pas de forme progressive."
+},
+{
+  fr: "Je suis en train de réfléchir.",
+  en: [
+    "I am thinking."
+  ],
+  explain: "Think (réfléchir) = dynamique → BE-ING."
+},
+{
+  fr: "Il aime cette chanson.",
+  en: [
+    "He likes this song."
+  ],
+  explain: "Like = verbe d'état → présent simple."
+},
+{
+  fr: "Il est en train d'écouter cette chanson.",
+  en: [
+    "He is listening to this song."
+  ],
+  explain: "Listen = dynamique → BE-ING."
+},
+{
+  fr: "Il doit être en train de dormir.",
+  en: [
+    "He must be sleeping."
+  ],
+  explain: "Must + BE-ING : déduction logique sur une action probablement en cours."
+},
+{
+  fr: "Il doit avoir oublié son téléphone.",
+  en: [
+    "He must have forgotten his phone."
+  ],
+  explain: "Must + have + participe passé : déduction logique sur le passé."
+},
+{
+  fr: "Il aurait pu être en train de travailler.",
+  en: [
+    "He could have been working.",
+    "He might have been working."
+  ],
+  explain: "Modal perfect continuous : hypothèse sur une action en cours dans le passé."
+},
+{
+  fr: "Il ne peut pas être à la maison.",
+  en: [
+    "He can't be at home."
+  ],
+  explain: "Can't épistémique : forte déduction négative au présent."
+},
+{
+  fr: "Il ne peut pas avoir dit ça.",
+  en: [
+    "He can't have said that."
+  ],
+  explain: "Can't have + participe passé : impossibilité logique dans le passé."
+},
+{
+  fr: "Dans dix ans, je vivrai à l'étranger.",
+  en: [
+    "In ten years, I will live abroad."
+  ],
+  explain: "Will simple : prédiction neutre concernant le futur."
+},
+{
+  fr: "À cette heure-ci demain, je serai en train de voler.",
+  en: [
+    "This time tomorrow, I will be flying."
+  ],
+  explain: "Future continuous : action en cours à un moment futur précis."
+},
+{
+  fr: "Quand tu arriveras, j'aurai déjà fini.",
+  en: [
+    "When you arrive, I will have already finished."
+  ],
+  explain: "Future perfect : action accomplie avant un autre moment futur."
+},
+{
+  fr: "Il a dit qu'il était fatigué.",
+  en: [
+    "He said that he was tired."
+  ],
+  explain: "Discours indirect : backshift au prétérit."
+},
+{
+  fr: "Elle a dit qu'elle viendrait.",
+  en: [
+    "She said she would come."
+  ],
+  explain: "Will → would au discours indirect."
+},
+{
+  fr: "Il a dit qu'il avait fini.",
+  en: [
+    "He said he had finished."
+  ],
+  explain: "Past perfect pour marquer l'antériorité dans le discours indirect."
+},
+{
+  fr: "Il me manque.",
+  en: [
+    "I miss him.",
+    "I miss her."
+  ],
+  explain: "Structure inversée par rapport au français : le sujet devient celui qui ressent le manque."
+},
+{
+  fr: "Il fait froid.",
+  en: [
+    "It is cold."
+  ],
+  explain: "On utilise 'it' pour la météo en anglais."
+},
+{
+  fr: "J'ai 20 ans.",
+  en: [
+    "I am 20 years old."
+  ],
+  explain: "En anglais, l'âge s'exprime avec le verbe 'to be'."
+},
+{
+  fr: "Je suis d'accord.",
+  en: [
+    "I agree."
+  ],
+  explain: "'Agree' est un verbe. On ne dit pas 'I am agree'."
+},
+{
+  fr: "Je suis habitué à me lever tôt.",
+  en: [
+    "I am used to getting up early."
+  ],
+  explain: "Be used to + ING : habitude actuelle."
+},
+{
+  fr: "Il doit travailler dur ces jours-ci.",
+  en: [
+    "He must be working hard these days."
+  ],
+  explain: "Must + BE-ING : déduction sur une action en cours (période actuelle)."
+},
+{
+  fr: "Elle risque de tomber.",
+  en: [
+    "She may fall.",
+    "She might fall."
+  ],
+  explain: "May/Might : possibilité incertaine."
+},
+{
+  fr: "Elle a failli tomber.",
+  en: [
+    "She almost fell."
+  ],
+  explain: "Almost + prétérit : action presque réalisée."
+},
+{
+  fr: "Elle continue de parler.",
+  en: [
+    "She keeps talking."
+  ],
+  explain: "Keep + ING : action qui se poursuit."
+},
 
-  {
-    fr: "J’ai perdu mes clés, je ne les retrouve pas.",
-    en: "I have lost my keys, I can't find them.",
-    explain: "On utilise le present perfect car l’action passée a une conséquence actuelle implicite : les clés sont toujours perdues. Le lien avec le présent est essentiel."
-  },
-  {
-    fr: "J’ai perdu mes clés hier.",
-    en: "I lost my keys yesterday.",
-    explain: "La présence d’un repère temporel passé fermé ('yesterday') impose le prétérit. Le present perfect est impossible avec un passé daté."
-  },
-  {
-    fr: "Elle a déjà fini.",
-    en: "She has already finished.",
-    explain: "Already marque un accomplissement ayant un impact sur le présent. On exprime un résultat actuel."
-  },
-  {
-    fr: "Tu as déjà vu ce film ?",
-    en: "Have you already seen this movie?",
-    explain: "Question d’expérience. On ne demande pas 'quand', mais si l’expérience existe dans le passé relié au présent."
-  },
-  {
-    fr: "Je n’ai jamais voyagé en Italie.",
-    en: "I have never travelled to Italy.",
-    explain: "Never exprime une expérience absente jusqu’à maintenant. On utilise le present perfect pour parler du bilan de vie."
-  },
-  {
-    fr: "Il vit ici depuis 2019.",
-    en: "He has lived here since 2019.",
-    explain: "Since introduit un point de départ dans le passé avec une continuité jusqu’au présent. On utilise le present perfect."
-  },
-  {
-    fr: "Il vit ici depuis trois ans.",
-    en: "He has lived here for three years.",
-    explain: "For exprime une durée qui continue jusqu’au présent. Le present perfect est obligatoire."
-  },
-  {
-    fr: "Nous venons de manger.",
-    en: "We have just eaten.",
-    explain: "Just indique une action très récente ayant un lien direct avec le présent."
-  },
-  {
-    fr: "Il est parti.",
-    en: "He has left.",
-    explain: "On insiste sur le résultat présent : il n’est plus ici. Le focus est sur la conséquence actuelle."
-  },
-  {
-    fr: "J’ai fini !",
-    en: "I have finished!",
-    explain: "On insiste sur l’état actuel (le travail est terminé maintenant). Le present perfect met en avant le résultat."
-  },
-
-  {
-    fr: "Je suis allé à Londres l'année dernière.",
-    en: "I went to London last year.",
-    explain: "Repère temporel fermé ('last year'). L’action appartient totalement au passé sans lien avec le présent."
-  },
-  {
-    fr: "Il a ouvert la porte puis il est parti.",
-    en: "He opened the door and then left.",
-    explain: "Suite d’événements dans un récit passé. Le prétérit sert à enchaîner des actions ponctuelles."
-  },
-  {
-    fr: "Elle a appelé hier soir.",
-    en: "She called last night.",
-    explain: "Repère temporel précis et terminé. On utilise le prétérit."
-  },
-  {
-    fr: "Je l’ai vu il y a deux jours.",
-    en: "I saw him two days ago.",
-    explain: "'Ago' indique une distance temporelle terminée. Le prétérit est obligatoire."
-  },
-  {
-    fr: "Il a vécu ici pendant dix ans.",
-    en: "He lived here for ten years.",
-    explain: "Durée terminée dans le passé. Il n’y vit plus. On choisit le prétérit."
-  },
-
-  {
-    fr: "Il dormait quand je suis arrivé.",
-    en: "He was sleeping when I arrived.",
-    explain: "Was + ING décrit l’action en cours (arrière-plan). 'Arrived' est l’événement ponctuel qui interrompt."
-  },
-  {
-    fr: "Je regardais la télé à 20 h.",
-    en: "I was watching TV at 8 p.m.",
-    explain: "On décrit une action en cours à un moment précis du passé."
-  },
-  {
-    fr: "Ils discutaient pendant que je travaillais.",
-    en: "They were talking while I was working.",
-    explain: "Deux actions simultanées en cours dans le passé. Le past continuous souligne le déroulement."
-  },
-
-  {
-    fr: "Il était déjà parti quand je suis arrivé.",
-    en: "He had already left when I arrived.",
-    explain: "Had + participe passé indique une action antérieure à un autre moment du passé."
-  },
-  {
-    fr: "Nous avions fini avant qu’il arrive.",
-    en: "We had finished before he arrived.",
-    explain: "Le past perfect marque clairement l’antériorité par rapport à 'arrived'."
-  },
-
-  {
-    fr: "Je t’appellerai quand j’arriverai.",
-    en: "I will call you when I arrive.",
-    explain: "Dans les subordonnées de temps (when), on n’utilise pas 'will'. On met le présent simple même si le sens est futur."
-  },
-  {
-    fr: "Dis-moi quand tu arriveras.",
-    en: "Tell me when you arrive.",
-    explain: "Subordonnée de temps. Pas de 'will' après when."
-  },
-  {
-    fr: "Je ne sais pas quand il arrivera.",
-    en: "I don't know when he will arrive.",
-    explain: "Ici 'when' introduit une question indirecte ('à quel moment ?'). Ce n’est pas une subordonnée de temps. 'Will' est donc possible."
-  },
-
-  {
-    fr: "Il doit être fatigué.",
-    en: "He must be tired.",
-    explain: "Must exprime ici une déduction logique (valeur épistémique). Ce n’est pas une obligation."
-  },
-  {
-    fr: "Il doit avoir oublié.",
-    en: "He must have forgotten.",
-    explain: "Must + have + participe passé exprime une déduction sur un événement passé."
-  },
-  {
-    fr: "Il peut être à la maison.",
-    en: "He may be at home.",
-    explain: "May exprime une possibilité incertaine (épistémique)."
-  },
-  {
-    fr: "Il pourrait être en train de dormir.",
-    en: "He might be sleeping.",
-    explain: "Might + BE-ING exprime une hypothèse sur une action possiblement en cours."
-  },
-  {
-    fr: "Il aurait pu venir.",
-    en: "He could have come.",
-    explain: "Could have + participe passé exprime une possibilité non réalisée dans le passé."
-  },
-
-  {
-    fr: "Quand j'étais enfant, je jouais dehors tous les jours.",
-    en: "When I was a child, I used to play outside every day.",
-    explain: "Used to exprime une habitude passée qui n'existe plus aujourd'hui. On insiste sur la rupture avec le présent."
-  },
-  {
-    fr: "Il fumait beaucoup à l'époque.",
-    en: "He used to smoke a lot.",
-    explain: "Used to marque une habitude passée révolue."
-  },
-  {
-    fr: "Chaque été, nous allions à la mer.",
-    en: "Every summer, we would go to the sea.",
-    explain: "Would peut exprimer une habitude répétée dans un contexte narratif passé."
-  },
-  {
-    fr: "Il habitait à Paris avant.",
-    en: "He used to live in Paris.",
-    explain: "Used to est préféré pour les états passés révolus."
-  },
-
-  {
-    fr: "La porte a été ouverte.",
-    en: "The door was opened.",
-    explain: "Voix passive au prétérit : on met l'accent sur l'action subie par le sujet."
-  },
-  {
-    fr: "Le travail est terminé.",
-    en: "The work is finished.",
-    explain: "Passif au présent : état résultant d'une action."
-  },
-  {
-    fr: "Le livre a été écrit en 1990.",
-    en: "The book was written in 1990.",
-    explain: "Passif + repère temporel passé => prétérit."
-  },
-  {
-    fr: "La maison est en train d'être construite.",
-    en: "The house is being built.",
-    explain: "Passif progressif : BE + being + participe passé."
-  },
-  {
-    fr: "Le projet a été terminé.",
-    en: "The project has been completed.",
-    explain: "Present perfect passif : action passée avec résultat actuel."
-  },
-
-  {
-    fr: "Si j'avais de l'argent, je voyagerais.",
-    en: "If I had money, I would travel.",
-    explain: "Second conditional : hypothèse irréelle dans le présent (if + prétérit, would + base verbale)."
-  },
-  {
-    fr: "Si j'avais su, je serais venu.",
-    en: "If I had known, I would have come.",
-    explain: "Third conditional : hypothèse irréelle dans le passé (if + past perfect, would have + participe passé)."
-  },
-  {
-    fr: "Je t'aiderais si je pouvais.",
-    en: "I would help you if I could.",
-    explain: "Structure conditionnelle irréelle au présent."
-  },
-
-  {
-    fr: "Demain à cette heure-ci, je travaillerai.",
-    en: "This time tomorrow, I will be working.",
-    explain: "Future continuous : action en cours à un moment précis dans le futur."
-  },
-  {
-    fr: "D'ici l'année prochaine, j'aurai fini.",
-    en: "By next year, I will have finished.",
-    explain: "Future perfect : action accomplie avant un moment futur."
-  },
-
-  {
-    fr: "Il vient de partir.",
-    en: "He has just left.",
-    explain: "Just + present perfect : action très récente liée au présent."
-  },
-  {
-    fr: "Il est parti il y a cinq minutes.",
-    en: "He left five minutes ago.",
-    explain: "Ago impose le prétérit car le moment est fermé."
-  },
-  {
-    fr: "As-tu déjà mangé ?",
-    en: "Have you eaten yet?",
-    explain: "Yet est utilisé avec le present perfect dans les questions."
-  },
-  {
-    fr: "J'ai mangé à midi.",
-    en: "I ate at noon.",
-    explain: "Repère temporel précis => prétérit."
-  },
-
-  {
-    fr: "Il a cassé sa jambe.",
-    en: "He has broken his leg.",
-    explain: "Present perfect car la conséquence est actuelle : sa jambe est toujours cassée."
-  },
-  {
-    fr: "Il s'est cassé la jambe en 2018.",
-    en: "He broke his leg in 2018.",
-    explain: "Repère temporel passé fermé => prétérit obligatoire."
-  },
-  {
-    fr: "Je n'ai pas encore fini.",
-    en: "I haven't finished yet.",
-    explain: "Yet implique un lien avec le présent. Present perfect requis."
-  },
-  {
-    fr: "Je n'ai pas fini hier.",
-    en: "I didn't finish yesterday.",
-    explain: "Yesterday impose le prétérit."
-  },
-  {
-    fr: "C'est la première fois que je viens ici.",
-    en: "This is the first time I have come here.",
-    explain: "Structure fixe : 'This is the first time' + present perfect pour exprimer l'expérience jusqu'à maintenant."
-  },
-
-  {
-    fr: "Je connais la réponse.",
-    en: "I know the answer.",
-    explain: "Know est statif : il exprime un état mental stable. Pas de BE-ING."
-  },
-  {
-    fr: "Je suis en train de réfléchir.",
-    en: "I am thinking.",
-    explain: "Think ici exprime un processus mental actif => BE-ING."
-  },
-  {
-    fr: "Il aime cette chanson.",
-    en: "He likes this song.",
-    explain: "Like est un verbe d'état. Pas d'aspect progressif."
-  },
-  {
-    fr: "Il est en train d'écouter cette chanson.",
-    en: "He is listening to this song.",
-    explain: "Listen est dynamique => BE-ING pour action en cours."
-  },
-
-  {
-    fr: "Il doit être en train de dormir.",
-    en: "He must be sleeping.",
-    explain: "Must + BE-ING : déduction logique sur une action probablement en cours."
-  },
-  {
-    fr: "Il doit avoir oublié son téléphone.",
-    en: "He must have forgotten his phone.",
-    explain: "Must + have + participe passé : déduction logique sur un événement passé."
-  },
-  {
-    fr: "Il aurait pu être en train de travailler.",
-    en: "He could have been working.",
-    explain: "Could have been + ING : hypothèse sur une action en cours dans le passé."
-  },
-  {
-    fr: "Il ne peut pas être à la maison.",
-    en: "He can't be at home.",
-    explain: "Can't épistémique : forte déduction négative."
-  },
-  {
-    fr: "Il ne peut pas avoir dit ça.",
-    en: "He can't have said that.",
-    explain: "Can't have + participe passé : impossibilité logique dans le passé."
-  },
-
-  {
-    fr: "Dans dix ans, je vivrai à l'étranger.",
-    en: "In ten years, I will live abroad.",
-    explain: "Will simple pour prédiction neutre concernant le futur."
-  },
-  {
-    fr: "À cette heure-ci demain, je serai en train de voler.",
-    en: "This time tomorrow, I will be flying.",
-    explain: "Future continuous : action en cours à un moment précis du futur."
-  },
-  {
-    fr: "Quand tu arriveras, j'aurai déjà fini.",
-    en: "When you arrive, I will have already finished.",
-    explain: "Future perfect : action accomplie avant un autre moment futur."
-  },
-
-  {
-    fr: "Il a dit qu'il était fatigué.",
-    en: "He said that he was tired.",
-    explain: "Discours indirect : backshift au prétérit car verbe introducteur au passé."
-  },
-  {
-    fr: "Elle a dit qu'elle viendrait.",
-    en: "She said she would come.",
-    explain: "Will devient would dans le discours indirect au passé."
-  },
-  {
-    fr: "Il a dit qu'il avait fini.",
-    en: "He said he had finished.",
-    explain: "Antériorité par rapport au moment du discours => past perfect."
-  },
-
-  {
-    fr: "Il me manque.",
-    en: "I miss him.",
-    explain: "Structure inversée par rapport au français. Sujet logique inversé."
-  },
-  {
-    fr: "Il fait froid.",
-    en: "It is cold.",
-    explain: "Pas de verbe 'faire' en anglais pour la météo."
-  },
-  {
-    fr: "J'ai 20 ans.",
-    en: "I am 20 years old.",
-    explain: "En anglais on utilise 'to be' pour l'âge."
-  },
-  {
-    fr: "Je suis d'accord.",
-    en: "I agree.",
-    explain: "Pas de structure avec 'am agree'. Agree est un verbe."
-  },
-  {
-    fr: "Je suis habitué à me lever tôt.",
-    en: "I am used to getting up early.",
-    explain: "Be used to + ING : habitude actuelle. Attention à la différence avec 'used to'."
-  }
 ];
 
 function normalize(s) {
@@ -1346,7 +1782,7 @@ if (mode === "fr2en") {
   questionEl.textContent = current.fr;
   inputEl.placeholder = "Écris la traduction en anglais...";
 } else {
-  questionEl.textContent = current.en;
+  questionEl.textContent = Array.isArray(current.en) ? current.en[0] : current.en;
   inputEl.placeholder = "Écris la traduction en français...";
 }
 
@@ -1359,28 +1795,33 @@ function checkAnswer() {
   if (!current || alreadyAnswered) return;
 
   attempts++;
-  const user = normalize(inputEl.value);
-  const expected = normalize(mode === "fr2en" ? current.en : current.fr);
 
-  const ok = user === expected;
+  const user = normalize(inputEl.value);
+
+  // ✅ On récupère une liste de réponses attendues (toujours un tableau)
+  const expectedListRaw = mode === "fr2en"
+    ? (Array.isArray(current.en) ? current.en : [current.en])
+    : (Array.isArray(current.fr) ? current.fr : [current.fr]);
+
+  const expectedList = expectedListRaw.map(normalize);
+
+  const ok = expectedList.includes(user);
 
   if (ok) {
     score++;
     feedbackEl.style.color = getComputedStyle(document.documentElement).getPropertyValue("--ok");
     feedbackEl.textContent = "✅ Bonne réponse !";
-
-    // ✅ NEW: si c'est correct, on cache le bouton "Mais j'avais bon !"
     almostBtn.style.display = "none";
   } else {
     feedbackEl.style.color = getComputedStyle(document.documentElement).getPropertyValue("--bad");
     feedbackEl.textContent = "❌ Mauvaise réponse.";
-
-    // ✅ NEW: montrer le bouton seulement si faux
     almostBtn.style.display = "inline-block";
   }
 
-  // Toujours afficher correction + explication
-  correctAnswerEl.textContent = mode === "fr2en" ? current.en : current.fr;
+  // ✅ Correction affichée : on affiche toutes les possibilités (1 par ligne)
+  const correctionToShow = expectedListRaw.join("\n");
+  correctAnswerEl.textContent = correctionToShow;
+
   explainEl.textContent = current.explain;
 
   detailsEl.style.display = "block";
@@ -1390,7 +1831,6 @@ function checkAnswer() {
 
   if (remaining.length === 0) nextBtn.textContent = "🔁 Recommencer";
 }
-
 // ✅ NEW: bouton "Mais j’avais bon !"
 almostBtn.addEventListener("click", () => {
   if (!alreadyAnswered) return;
